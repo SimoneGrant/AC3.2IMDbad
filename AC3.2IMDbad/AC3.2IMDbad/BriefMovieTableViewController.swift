@@ -8,12 +8,14 @@
 
 import UIKit
 
-class BriefMovieTableViewController: UITableViewController {
+class BriefMovieTableViewController: UITableViewController, UISearchBarDelegate {
     var briefMovies = [BriefMovie]()
+    let searchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        createSearchBar()
     }
     
     func loadData() {
@@ -26,6 +28,26 @@ class BriefMovieTableViewController: UITableViewController {
             }
         }
     }
+    
+    
+    //create a search bar in the navigation
+    func createSearchBar() {
+        searchBar.showsCancelButton = true
+        searchBar.placeholder = "Search Movie or Soundtrack"
+        searchBar.delegate = self
+        
+        self.navigationItem.titleView = searchBar
+    }
+    
+    //hide keyboard after user stops typing
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
     
     
     // MARK: - Table view data source
