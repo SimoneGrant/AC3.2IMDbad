@@ -73,21 +73,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         }
     }
     
-    /*
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     let thisBriefMovie = briefMovies[indexPath.row]
-     let myAPIEndpoint = "https://www.omdbapi.com/?i=\(thisBriefMovie.imdbID)"
-     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + myAPIEndpoint)
-     APIManager.manager.getData(endPoint: myAPIEndpoint) { (data: Data?) in
-     guard let unwrappedData = data else { return }
-     let thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
-     dump(thisFullMovie)
-     }
-     }*/
-    
-    
-    
-    
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
