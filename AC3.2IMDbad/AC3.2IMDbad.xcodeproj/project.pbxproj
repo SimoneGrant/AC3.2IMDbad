@@ -15,6 +15,8 @@
 		DEAB71921DD24931003B3AF5 /* FullMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71911DD24931003B3AF5 /* FullMovie.swift */; };
 		DEAB71961DD24969003B3AF5 /* BriefMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71951DD24969003B3AF5 /* BriefMovieTableViewController.swift */; };
 		DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71991DD249DF003B3AF5 /* APIManager.swift */; };
+		DEAB719D1DD263C6003B3AF5 /* Soundtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB719C1DD263C6003B3AF5 /* Soundtrack.swift */; };
+		DEAB719F1DD270AD003B3AF5 /* AlbumImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB719E1DD270AD003B3AF5 /* AlbumImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		DEAB71911DD24931003B3AF5 /* FullMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMovie.swift; sourceTree = "<group>"; };
 		DEAB71951DD24969003B3AF5 /* BriefMovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieTableViewController.swift; sourceTree = "<group>"; };
 		DEAB71991DD249DF003B3AF5 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		DEAB719C1DD263C6003B3AF5 /* Soundtrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soundtrack.swift; sourceTree = "<group>"; };
+		DEAB719E1DD270AD003B3AF5 /* AlbumImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 			children = (
 				DEAB718F1DD24912003B3AF5 /* BriefMovie.swift */,
 				DEAB71911DD24931003B3AF5 /* FullMovie.swift */,
+				DEAB719C1DD263C6003B3AF5 /* Soundtrack.swift */,
+				DEAB719E1DD270AD003B3AF5 /* AlbumImage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 				DEAB71921DD24931003B3AF5 /* FullMovie.swift in Sources */,
 				DEAB71961DD24969003B3AF5 /* BriefMovieTableViewController.swift in Sources */,
 				DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */,
+				DEAB719D1DD263C6003B3AF5 /* Soundtrack.swift in Sources */,
+				DEAB719F1DD270AD003B3AF5 /* AlbumImage.swift in Sources */,
 				DEAB717E1DD248CB003B3AF5 /* AppDelegate.swift in Sources */,
 				DEAB71901DD24912003B3AF5 /* BriefMovie.swift in Sources */,
 			);
@@ -351,6 +359,7 @@
 				DEAB718E1DD248CB003B3AF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
