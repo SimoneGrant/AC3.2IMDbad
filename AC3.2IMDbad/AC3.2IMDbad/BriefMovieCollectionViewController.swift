@@ -10,6 +10,7 @@ import UIKit
 
 fileprivate let apiEndpoint = "https://www.omdbapi.com/?s=batman"
 
+
 class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     fileprivate let itemsPerRow: CGFloat = 3
     
@@ -63,18 +64,27 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let briefMovie = self.briefMovies[indexPath.row]
-        APIManager.manager.getData(endPoint: briefMovie.poster) { (data: Data?) in
-            if let validData = data {
-                print(validData)
-            }
-            //                DispatchQueue.main.async {
-            //                    acvc.briefMovieImage.image = image
-            //                    acvc.setNeedsLayout()
-            //
-            //                }
+        let thisBriefMovie = self.briefMovies[indexPath.row]
+        let myAPIEndpoint = "https://www.omdbapi.com/?i=\(thisBriefMovie.imdbID)"
+        APIManager.manager.getData(endPoint: myAPIEndpoint) { (data: Data?) in
+            guard let unwrappedData = data else { return }
+            let thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
+            dump(thisFullMovie)
         }
     }
+    
+    /*
+     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     let thisBriefMovie = briefMovies[indexPath.row]
+     let myAPIEndpoint = "https://www.omdbapi.com/?i=\(thisBriefMovie.imdbID)"
+     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + myAPIEndpoint)
+     APIManager.manager.getData(endPoint: myAPIEndpoint) { (data: Data?) in
+     guard let unwrappedData = data else { return }
+     let thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
+     dump(thisFullMovie)
+     }
+     }*/
+    
     
     
     
