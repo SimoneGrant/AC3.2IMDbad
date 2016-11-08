@@ -62,34 +62,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         return cell
     }
     
-    // MARK: - TextField Delegate
-    /*
-     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-     search(textField.text!)
-     textField.text = nil
-     textField.resignFirstResponder()
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Utility search
-     func search(_ term: String) {
-     self.title = term
-     let escapedString = term.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-     //escaping avoiding unsafe characters?(ex: spaces and %)
-     
-     APIRequestManager.manager.getData(endPoint: "https://api.spotify.com/v1/search?q=\(escapedString!)&type=album&limit=50") { (data: Data?) in
-     if  let validData = data,
-     let validAlbums = Album.albums(from: validData) {
-     self.albums = validAlbums
-     DispatchQueue.main.async {
-     self.collectionView?.reloadData()
-     }
-     }
-     }
-     }
-     */
     
     
     // MARK: - UICollectionViewDelegateFlowLayout

@@ -15,7 +15,6 @@
 		DEAB71921DD24931003B3AF5 /* FullMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71911DD24931003B3AF5 /* FullMovie.swift */; };
 		DEAB71961DD24969003B3AF5 /* BriefMovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71951DD24969003B3AF5 /* BriefMovieCollectionViewController.swift */; };
 		DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71991DD249DF003B3AF5 /* APIManager.swift */; };
-		E3B8DDE91DD263DC00699D12 /* scratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DDE81DD263DC00699D12 /* scratch.swift */; };
 		E3B8DDEB1DD266F900699D12 /* BriefMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DDEA1DD266F900699D12 /* BriefMovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		DEAB71911DD24931003B3AF5 /* FullMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMovie.swift; sourceTree = "<group>"; };
 		DEAB71951DD24969003B3AF5 /* BriefMovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewController.swift; sourceTree = "<group>"; };
 		DEAB71991DD249DF003B3AF5 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		E3B8DDE81DD263DC00699D12 /* scratch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scratch.swift; sourceTree = "<group>"; };
 		E3B8DDEA1DD266F900699D12 /* BriefMovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +62,6 @@
 		DEAB717C1DD248CB003B3AF5 /* AC3.2IMDbad */ = {
 			isa = PBXGroup;
 			children = (
-				E3B8DDE81DD263DC00699D12 /* scratch.swift */,
 				E3B8DDEC1DD2671200699D12 /* Views */,
 				DEAB71931DD24938003B3AF5 /* Models */,
 				DEAB719B1DD249F0003B3AF5 /* Networking */,
@@ -200,7 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B8DDEB1DD266F900699D12 /* BriefMovieCollectionViewCell.swift in Sources */,
-				E3B8DDE91DD263DC00699D12 /* scratch.swift in Sources */,
 				DEAB71921DD24931003B3AF5 /* FullMovie.swift in Sources */,
 				DEAB71961DD24969003B3AF5 /* BriefMovieCollectionViewController.swift in Sources */,
 				DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */,
