@@ -8,19 +8,20 @@
 
 import UIKit
 
+fileprivate let apiEndpoint = "https://www.omdbapi.com/?s=batman"
 
 class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     fileprivate let itemsPerRow: CGFloat = 3
+    
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     var briefMovies = [BriefMovie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        loadData(apiEndpoint: apiEndpoint)
     }
     
-    func loadData() {
-        let apiEndpoint = "https://www.omdbapi.com/?s=batman"
+    func loadData(apiEndpoint: String) {
         APIManager.manager.getData(endPoint: apiEndpoint) { (data: Data?) in
             guard let unwrappedData = data else { return }
             self.briefMovies = BriefMovie.buildBriefMovieArray(from: unwrappedData)!
@@ -44,7 +45,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
             let briefMovie = self.briefMovies[indexPath.row]
             //acvc.briefMovieLabel.text = "\(indexPath.row + 1). \(briefMovie.title)"
             
-            
             if briefMovies.count > 0 {
                 APIManager.manager.getData(endPoint: briefMovie.poster) { (data: Data?) in
                     if let validData = data,
@@ -61,6 +61,21 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let briefMovie = self.briefMovies[indexPath.row]
+        APIManager.manager.getData(endPoint: briefMovie.poster) { (data: Data?) in
+            if let validData = data {
+                print(validData)
+            }
+            //                DispatchQueue.main.async {
+            //                    acvc.briefMovieImage.image = image
+            //                    acvc.setNeedsLayout()
+            //
+            //                }
+        }
+    }
+    
     
     
     
