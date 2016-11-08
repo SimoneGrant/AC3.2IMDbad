@@ -13,8 +13,10 @@
 		DEAB71881DD248CB003B3AF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEAB71861DD248CB003B3AF5 /* LaunchScreen.storyboard */; };
 		DEAB71901DD24912003B3AF5 /* BriefMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB718F1DD24912003B3AF5 /* BriefMovie.swift */; };
 		DEAB71921DD24931003B3AF5 /* FullMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71911DD24931003B3AF5 /* FullMovie.swift */; };
-		DEAB71961DD24969003B3AF5 /* BriefMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71951DD24969003B3AF5 /* BriefMovieTableViewController.swift */; };
+		DEAB71961DD24969003B3AF5 /* BriefMovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71951DD24969003B3AF5 /* BriefMovieCollectionViewController.swift */; };
 		DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71991DD249DF003B3AF5 /* APIManager.swift */; };
+		E3B8DDE91DD263DC00699D12 /* scratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DDE81DD263DC00699D12 /* scratch.swift */; };
+		E3B8DDEB1DD266F900699D12 /* BriefMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DDEA1DD266F900699D12 /* BriefMovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +28,10 @@
 		DEAB71891DD248CB003B3AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEAB718F1DD24912003B3AF5 /* BriefMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovie.swift; sourceTree = "<group>"; };
 		DEAB71911DD24931003B3AF5 /* FullMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMovie.swift; sourceTree = "<group>"; };
-		DEAB71951DD24969003B3AF5 /* BriefMovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieTableViewController.swift; sourceTree = "<group>"; };
+		DEAB71951DD24969003B3AF5 /* BriefMovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewController.swift; sourceTree = "<group>"; };
 		DEAB71991DD249DF003B3AF5 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		E3B8DDE81DD263DC00699D12 /* scratch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scratch.swift; sourceTree = "<group>"; };
+		E3B8DDEA1DD266F900699D12 /* BriefMovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 		DEAB717C1DD248CB003B3AF5 /* AC3.2IMDbad */ = {
 			isa = PBXGroup;
 			children = (
+				E3B8DDE81DD263DC00699D12 /* scratch.swift */,
+				E3B8DDEC1DD2671200699D12 /* Views */,
 				DEAB71931DD24938003B3AF5 /* Models */,
 				DEAB719B1DD249F0003B3AF5 /* Networking */,
 				DEAB71971DD24971003B3AF5 /* View Controllers */,
@@ -91,7 +97,7 @@
 		DEAB71971DD24971003B3AF5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DEAB71951DD24969003B3AF5 /* BriefMovieTableViewController.swift */,
+				DEAB71951DD24969003B3AF5 /* BriefMovieCollectionViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -111,6 +117,14 @@
 				DEAB71991DD249DF003B3AF5 /* APIManager.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		E3B8DDEC1DD2671200699D12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E3B8DDEA1DD266F900699D12 /* BriefMovieCollectionViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,8 +199,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3B8DDEB1DD266F900699D12 /* BriefMovieCollectionViewCell.swift in Sources */,
+				E3B8DDE91DD263DC00699D12 /* scratch.swift in Sources */,
 				DEAB71921DD24931003B3AF5 /* FullMovie.swift in Sources */,
-				DEAB71961DD24969003B3AF5 /* BriefMovieTableViewController.swift in Sources */,
+				DEAB71961DD24969003B3AF5 /* BriefMovieCollectionViewController.swift in Sources */,
 				DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */,
 				DEAB717E1DD248CB003B3AF5 /* AppDelegate.swift in Sources */,
 				DEAB71901DD24912003B3AF5 /* BriefMovie.swift in Sources */,
@@ -351,6 +367,7 @@
 				DEAB718E1DD248CB003B3AF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
