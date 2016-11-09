@@ -10,12 +10,12 @@ import UIKit
 
 fileprivate let apiEndpoint = "https://www.omdbapi.com/?s=batman"
 
-
 class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     fileprivate let itemsPerRow: CGFloat = 3
     
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     var briefMovies = [BriefMovie]()
+    var thisFullMovie: FullMovie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,9 +68,11 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         let myAPIEndpoint = "https://www.omdbapi.com/?i=\(thisBriefMovie.imdbID)"
         APIManager.manager.getData(endPoint: myAPIEndpoint) { (data: Data?) in
             guard let unwrappedData = data else { return }
-            let thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
-            dump(thisFullMovie)
+            self.thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
+            //dump(thisFullMovie)
         }
+        
+        self.performSegue(withIdentifier: "FullMovieSegue", sender: self)
     }
     
     
@@ -99,5 +101,18 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
+    
+    //MARK: - Segue to FullMovieDetailViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FullMovieSegue" {
+            if let vc = segue.destination as? FullMovieDetailViewController {
+                vc.detailFullMovie = thisFullMovie
+            }
+        }
+    }
+    
+    
+    
     
 }

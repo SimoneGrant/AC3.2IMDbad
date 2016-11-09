@@ -12,7 +12,7 @@
         <scene sceneID="BOP-rL-9Z0">
             <objects>
                 <collectionViewController id="9Nx-he-RcP" customClass="BriefMovieCollectionViewController" customModule="AC3_2IMDbad" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="KVU-UR-SBy">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="KVU-UR-SBy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,10 +63,55 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="rfA-SA-nui"/>
+                    <connections>
+                        <segue destination="kdF-Ty-m9d" kind="show" identifier="FullMovieSegue" id="r68-Yz-DxF"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOd-b5-zdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1898.4000000000001" y="86.806596701649184"/>
+        </scene>
+        <!--Full Movie Detail View Controller-->
+        <scene sceneID="dPk-5B-gyY">
+            <objects>
+                <viewController id="kdF-Ty-m9d" customClass="FullMovieDetailViewController" customModule="AC3_2IMDbad" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qrf-dc-tiU"/>
+                        <viewControllerLayoutGuide type="bottom" id="A2A-YG-cCS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v8D-Ed-SD0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1sE-Ae-ZOj">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1sE-Ae-ZOj" secondAttribute="height" multiplier="49:39" id="37E-W4-oE9"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTH-bZ-i9c">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GTH-bZ-i9c" firstAttribute="leading" secondItem="1sE-Ae-ZOj" secondAttribute="leading" id="BNP-uH-0ma"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1sE-Ae-ZOj" secondAttribute="trailing" id="U92-u2-zz2"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1sE-Ae-ZOj" secondAttribute="leading" id="eP7-ia-WW4"/>
+                            <constraint firstItem="1sE-Ae-ZOj" firstAttribute="top" secondItem="qrf-dc-tiU" secondAttribute="bottom" constant="8" id="f18-LW-E9B"/>
+                            <constraint firstItem="GTH-bZ-i9c" firstAttribute="trailing" secondItem="1sE-Ae-ZOj" secondAttribute="trailing" id="gP5-R9-8yb"/>
+                            <constraint firstItem="GTH-bZ-i9c" firstAttribute="top" secondItem="1sE-Ae-ZOj" secondAttribute="bottom" constant="8" symbolic="YES" id="pet-9U-di5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fullMovieImage" destination="1sE-Ae-ZOj" id="1KL-pL-kvw"/>
+                        <outlet property="fullMovieLabel" destination="GTH-bZ-i9c" id="eov-xV-3lo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFs-0a-gWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628" y="86.806596701649184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QzZ-gh-oEh">
