@@ -16,21 +16,22 @@ class FullMovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            self.fullMovieLabel.text = detailFullMovie?.title
-            //self.fullMovieImage.image = nil
-            getFullMovieImage()
+        self.fullMovieLabel.text = detailFullMovie?.title
+        //self.fullMovieImage.image = nil
+        getFullMovieImage()
     }
-
+    
     func getFullMovieImage() {
         APIManager.manager.getData(endPoint: (detailFullMovie?.posterURL)!) { (data: Data?) in
-            if let validData = data,
-                let image = UIImage(data: validData) {
-                DispatchQueue.main.async {
-                    self.fullMovieImage.image = image
-                    self.fullMovieImage.setNeedsLayout()
+            if data != nil {
+                if let validData = data,
+                    let image = UIImage(data: validData) {
+                    DispatchQueue.main.async {
+                        self.fullMovieImage.image = image
+                        self.fullMovieImage.setNeedsLayout()
+                    }
                 }
             }
         }
     }
-
 }

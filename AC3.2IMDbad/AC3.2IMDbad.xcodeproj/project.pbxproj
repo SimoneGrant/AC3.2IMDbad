@@ -17,6 +17,7 @@
 		DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB71991DD249DF003B3AF5 /* APIManager.swift */; };
 		E3B8DDEB1DD266F900699D12 /* BriefMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DDEA1DD266F900699D12 /* BriefMovieCollectionViewCell.swift */; };
 		E3B8DDF01DD3741800699D12 /* FullMovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DDEF1DD3741800699D12 /* FullMovieDetailViewController.swift */; };
+		E3B8DDF21DD3A1DF00699D12 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DDF11DD3A1DF00699D12 /* CustomSearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DEAB71991DD249DF003B3AF5 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E3B8DDEA1DD266F900699D12 /* BriefMovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3B8DDEF1DD3741800699D12 /* FullMovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMovieDetailViewController.swift; sourceTree = "<group>"; };
+		E3B8DDF11DD3A1DF00699D12 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				DEAB718F1DD24912003B3AF5 /* BriefMovie.swift */,
+				E3B8DDF11DD3A1DF00699D12 /* CustomSearchBar.swift */,
 				DEAB71911DD24931003B3AF5 /* FullMovie.swift */,
 			);
 			name = Models;
@@ -205,6 +208,7 @@
 				DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */,
 				DEAB717E1DD248CB003B3AF5 /* AppDelegate.swift in Sources */,
 				DEAB71901DD24912003B3AF5 /* BriefMovie.swift in Sources */,
+				E3B8DDF21DD3A1DF00699D12 /* CustomSearchBar.swift in Sources */,
 				E3B8DDF01DD3741800699D12 /* FullMovieDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
