@@ -73,6 +73,10 @@ class BriefMovieTableViewController: UITableViewController {
             let arrayOfSoundtracks = Soundtrack.buildSoundtrackArray(from: unwrappedData)
             dump(arrayOfSoundtracks)
         }
+        
+        let imdbString = "http://www.imdb.com/title/" + thisBriefMovie.imdbID
+        guard let url = URL(string: imdbString) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
 }
