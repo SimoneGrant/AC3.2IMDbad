@@ -11,16 +11,15 @@ import Foundation
 class AlbumImage {
     let height: Int
     let width: Int
-    let url: URL
+    let urlString: String
     
     init?(from dictionary: [String:AnyObject]) {
         if let height = dictionary["height"] as? Int,
             let width = dictionary["width"] as? Int,
-            let url = dictionary["url"] as? String,
-            let validURL = URL(string: url) {
+            let url = dictionary["url"] as? String {
             self.height = height
             self.width = width
-            self.url = validURL
+            self.urlString = url
         }
         else {
             return nil

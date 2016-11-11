@@ -106,9 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */,
-				DEBDAB2E1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift */,
-				DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */,
 				DE4828FC1DD3BA6E007768C2 /* FullMovieDetailViewController.swift */,
+				DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */,
+				DEBDAB2E1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift */,
 				DEAB71951DD24969003B3AF5 /* BriefMovieTableViewController.swift */,
 			);
 			name = "View Controllers";

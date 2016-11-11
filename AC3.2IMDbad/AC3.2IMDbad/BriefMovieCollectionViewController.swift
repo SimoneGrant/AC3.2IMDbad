@@ -8,12 +8,19 @@
 
 import UIKit
 
-private let reuseIdentifier = "BriefMovieCell"
 
-class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+
+class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
-    let itemsPerRow: CGFloat = 2
-    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    let briefMovieAPIEndpoint = "https://www.omdbapi.com/?s="
+    var searchWord = "batman"
+    
+    let fullMovieAPIEndpoint =  "https://www.omdbapi.com/?i="
+    let fullMovieDetailSegue =  "fullMovieDetailSegue"
+    
+    private let BriefMovieReuseIdentifier = "BriefMovieCell"
+    private let itemsPerRow: CGFloat = 2
+    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
     var briefMovies = [BriefMovie]()
 
@@ -24,8 +31,8 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     }
     
     func loadData() {
-        let apiEndpoint = "https://www.omdbapi.com/?s=batman"
-        APIManager.manager.getData(endPoint: apiEndpoint) { (data: Data?) in
+        
+        APIManager.manager.getData(endPoint: briefMovieAPIEndpoint + searchWord) { (data: Data?) in
             guard let unwrappedData = data else { return }
             self.briefMovies = BriefMovie.buildBriefMovieArray(from: unwrappedData)!
             DispatchQueue.main.async {
@@ -33,30 +40,36 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
             }
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let allTextFieldText = textField.text ?? "batman"
+        textField.text = nil
+        self.searchWord = allTextFieldText.replacingOccurrences(of: " ", with: "%20")
+        
+        loadData()
+        
+        return true
+    }
+
 
 
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        
-        print(briefMovies.count)
         return briefMovies.count
-        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BriefMovieCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.BriefMovieReuseIdentifier, for: indexPath) as! BriefMovieCollectionViewCell
         let thisBriefMovie = briefMovies[indexPath.item]
-        cell.backgroundColor = UIColor.blue
-        cell.briefMovieTextLabel.text = thisBriefMovie.title
+
+        cell.briefMovieTextLabel.text = "\(thisBriefMovie.title)\n\(thisBriefMovie.year)"
         
         APIManager.manager.getData(endPoint: thisBriefMovie.poster) { (data: Data?) in
             guard let unwrappedData = data else { return }
@@ -65,45 +78,29 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
                 cell.setNeedsLayout()
             }
         }
-    
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let thisBriefMovie = briefMovies[indexPath.item]
+        let thisFullMovieAPIEndpoint = self.fullMovieAPIEndpoint + thisBriefMovie.imdbID
         
-        let fullMovieAPIEndpoint = "https://www.omdbapi.com/?i=\(thisBriefMovie.imdbID)"
-        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + fullMovieAPIEndpoint)
-        APIManager.manager.getData(endPoint: fullMovieAPIEndpoint) { (data: Data?) in
+        APIManager.manager.getData(endPoint: thisFullMovieAPIEndpoint) { (data: Data?) in
             guard let unwrappedData = data else { return }
             let thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
             dump(thisFullMovie)
         }
-        
-//        let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisBriefMovie.titleSearchString)&type=album&limit=50"
-//        APIManager.manager.getData(endPoint: soundtrackAPIEndpoint) { (data: Data?) in
-//            guard let unwrappedData = data else { return }
-//            let arrayOfSoundtracks = Soundtrack.buildSoundtrackArray(from: unwrappedData)
-//            dump(arrayOfSoundtracks)
-//        }
-        
-        performSegue(withIdentifier: "FullMovieDetailSegue", sender: thisBriefMovie)
-        
+        performSegue(withIdentifier: fullMovieDetailSegue, sender: thisBriefMovie)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FullMovieDetailSegue" {
+        if segue.identifier == fullMovieDetailSegue {
             let destinationViewController = segue.destination as! FullMovieDetailViewController
             let thisBriefMovie = sender as! BriefMovie
             
             destinationViewController.thisBriefMovie = thisBriefMovie
         }
     }
-    
-    
-    
-
-    
 
 
     // MARK: UICollectionViewDelegate
@@ -116,7 +113,7 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
-        return CGSize(width: widthPerItem, height: widthPerItem * 1.5)
+        return CGSize(width: widthPerItem, height: widthPerItem * 1.7)
     }
     
     func collectionView(_ collectionView: UICollectionView,

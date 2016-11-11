@@ -16,11 +16,11 @@ class FullMovie {
     let plot: String
     let posterURL: String
     let runtime: String
-    let cast: [String]
+    let cast: String
     let imdbRating: String
     let rated: String
     
-    init(title: String, year: String, genre: String, runtime: String, plot: String, posterURL: String, cast: [String], imdbRating: String, rated: String) {
+    init(title: String, year: String, genre: String, runtime: String, plot: String, posterURL: String, cast: String, imdbRating: String, rated: String) {
         self.title = title
         self.year = year
         self.genre = genre
@@ -39,11 +39,9 @@ class FullMovie {
             let fmPlot = withDict["Plot"],
             let fmPoster = withDict["Poster"],
             let fmRuntime = withDict["Runtime"],
-            let fmActors = withDict["Actors"],
+            let fmCast = withDict["Actors"],
             let fmRating = withDict["imdbRating"],
             let fmRated = withDict["Rated"] {
-            
-            let fmCast = fmActors.components(separatedBy: ", ")
             
             self.init(title: fmTitle, year: fmYear, genre: fmGenre, runtime: fmRuntime, plot: fmPlot, posterURL: fmPoster, cast: fmCast, imdbRating: fmRating, rated: fmRated)
         } else {
