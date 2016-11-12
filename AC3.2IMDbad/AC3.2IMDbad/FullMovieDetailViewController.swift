@@ -10,13 +10,12 @@ import UIKit
 
 class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout  {
     
-    var soundtracks: [Soundtrack]! = []
-    var thisFullMovie: FullMovie!
+    var thisMovie: Movie!
     
-    var thisBriefMovie: BriefMovie!
+    var soundtracks: [Soundtrack]! = []
 
-    @IBOutlet weak var FullMovieImageView: UIImageView!
-    @IBOutlet weak var FullMovieTitileLabel: UILabel!
+    @IBOutlet weak var fullMovieImageView: UIImageView!
+    @IBOutlet weak var fullMovieTitileLabel: UILabel!
     @IBOutlet weak var soundtrackCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -29,29 +28,56 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     }
     
     func loadFullMovieData() {
-        let fullMovieAPIEndpoint = "https://www.omdbapi.com/?i=\(thisBriefMovie.imdbID)"
-
-        APIManager.manager.getData(endPoint: fullMovieAPIEndpoint) { (data: Data?) in
-            guard let unwrappedData = data else { return }
-            self.thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
-            DispatchQueue.main.async {
-                print("*****************FULL MOVIE*****************************")
-                dump(self.thisFullMovie)
-                self.navigationItem.title = self.thisFullMovie.title
-                self.FullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisFullMovie)
-            }
-            APIManager.manager.getData(endPoint: self.thisFullMovie.posterURL) { (data: Data?) in
+        
+        self.fullMovieImageView.image = #imageLiteral(resourceName: "loadingImage")
+        self.fullMovieTitileLabel.text = "... loading info"
+        
+        
+        // CHECK HERE TO SEE IF THIS MOVIE ALREADY HAS A FULL MOVIE BEFORE API CALL
+   
+        if thisMovie.fullInfo == nil {
+            
+            let fullMovieAPIEndpoint = "https://www.omdbapi.com/?i=\(thisMovie.briefInfo.imdbID)"
+            
+            APIManager.manager.getData(endPoint: fullMovieAPIEndpoint) { (data: Data?) in
                 guard let unwrappedData = data else { return }
+                self.thisMovie.fullInfo = FullMovie.getFullMovie(from: unwrappedData)
                 DispatchQueue.main.async {
-                    self.FullMovieImageView.image = UIImage(data: unwrappedData)
-                    self.view.reloadInputViews()
+                    print("*****************FULL MOVIE*****************************")
+                    dump(self.thisMovie.fullInfo)
+                    
+                    // MIGHT WANNA BANG THAT FULL INFO                \|/
+                    self.navigationItem.title = self.thisMovie.fullInfo?.title
+                    self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
+                    self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+                }
+                APIManager.manager.getData(endPoint: self.thisMovie.fullInfo!.posterURL) { (data: Data?) in
+                    guard let unwrappedData = data else { return }
+                    self.thisMovie.fullInfo?.posterData = unwrappedData
+                    DispatchQueue.main.async {
+                        self.fullMovieImageView.image = UIImage(data: unwrappedData)
+                        self.view.reloadInputViews()
+                    }
                 }
             }
+            
+        } else {
+            self.navigationItem.title = self.thisMovie.fullInfo!.title
+            self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
+            
+            if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
+                self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
+            } else {
+                self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+            }
+
+            // refactor the duplicate oulet setup into a method
         }
+        
     }
     
     func loadSoundtrackData() {
-        let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisBriefMovie.titleSearchString)&type=album&limit=50"
+        let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisMovie.briefInfo.titleSearchString)&type=album&limit=50"
         APIManager.manager.getData(endPoint: soundtrackAPIEndpoint) { (data: Data?) in
             guard let unwrappedData = data else { return }
             self.soundtracks = Soundtrack.buildSoundtrackArray(from: unwrappedData)
@@ -65,7 +91,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     }
     
     @IBAction func goToIMDb(_ sender: UIButton) {
-        let imdbString = "http://www.imdb.com/title/" + thisBriefMovie.imdbID
+        let imdbString = "http://www.imdb.com/title/" + thisMovie.briefInfo.imdbID
         guard let url = URL(string: imdbString) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }

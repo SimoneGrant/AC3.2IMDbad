@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class FullMovie {
     
@@ -19,6 +20,10 @@ class FullMovie {
     let cast: String
     let imdbRating: String
     let rated: String
+    
+    var posterData: Data?
+    
+    var soundtracks: [Soundtrack]?
     
     init(title: String, year: String, genre: String, runtime: String, plot: String, posterURL: String, cast: String, imdbRating: String, rated: String) {
         self.title = title
