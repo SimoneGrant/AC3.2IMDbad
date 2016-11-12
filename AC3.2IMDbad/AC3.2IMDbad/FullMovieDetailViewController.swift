@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout  {
+class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
     var thisMovie: Movie!
 
@@ -104,12 +104,10 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     
     private let soundtrackReuseIdentifier = "soundtrackCell"
     
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         print("___________________ Collection View Something ___________________")
         return 1
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return thisMovie.soundtracks?.count ?? 3
@@ -137,9 +135,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     private let itemsPerColumn = CGFloat(1)
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let paddingSpace = sectionInsets.left * (itemsPerColumn + 1)
         let availableHeight = view.frame.width - paddingSpace
@@ -148,18 +144,13 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
         return CGSize(width: heightPerItem, height: heightPerItem)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-
 
 }
 
