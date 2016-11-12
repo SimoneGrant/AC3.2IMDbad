@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate let apiEndpoint = "https://www.omdbapi.com/?s=batman"
 
-class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITextFieldDelegate {
     fileprivate let itemsPerRow: CGFloat = 3
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     let searchBar = UISearchBar()
@@ -19,8 +19,9 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData(apiEndpoint: apiEndpoint)
-        createSearchBar()
+        self.title = "Search a movie"
+        //loadData(apiEndpoint: apiEndpoint)
+        //createSearchBar()
     }
     
     //MARK: - Funcs
@@ -42,6 +43,28 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         searchBar.delegate = self
         
         self.navigationItem.titleView = searchBar
+    }
+    
+    // MARK: - TextField Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        search(textField.text!)
+        textField.text = nil
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func search(_ term: String) {
+        self.title = term
+        let escapedString = term.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        //escaping avoiding unsafe characters?(ex: spaces and %)
+        
+        APIManager.manager.getData(endPoint: "https://www.omdbapi.com/?s=\(escapedString!)") { (data: Data?) in
+            guard let unwrappedData = data else { return }
+            self.briefMovies = BriefMovie.buildBriefMovieArray(from: unwrappedData)!
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+        }
     }
     
     // MARK: UICollectionViewDataSource
@@ -81,7 +104,7 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         APIManager.manager.getData(endPoint: myAPIEndpoint) { (data: Data?) in
             guard let unwrappedData = data else { return }
             self.thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
-            //dump(thisFullMovie)
+            //dump(self.thisFullMovie)
         }
         
         self.performSegue(withIdentifier: "FullMovieSegue", sender: self)

@@ -37,8 +37,7 @@
                                                 <constraint firstAttribute="width" constant="126" id="jfA-Rx-BiI"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9q-IP-eee">
-                                            <frame key="frameInset" minX="14" minY="138" width="126" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9q-IP-eee">
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -62,7 +61,19 @@
                             <outlet property="delegate" destination="9Nx-he-RcP" id="SZT-Th-lUd"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="rfA-SA-nui"/>
+                    <navigationItem key="navigationItem" id="sDN-cF-TWc">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="lTM-3k-eCe">
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="9Nx-he-RcP" id="4cL-hi-uGQ"/>
+                            </connections>
+                        </textField>
+                    </navigationItem>
                     <connections>
                         <segue destination="kdF-Ty-m9d" kind="show" identifier="FullMovieSegue" id="r68-Yz-DxF"/>
                     </connections>
@@ -111,14 +122,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFs-0a-gWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2724" y="87"/>
+            <point key="canvasLocation" x="2724" y="86.806596701649184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QzZ-gh-oEh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SyP-GB-7zb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bYl-x3-aSE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bYl-x3-aSE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
