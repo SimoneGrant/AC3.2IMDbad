@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-enum AlbumModelParseError: Error {
+enum SoundtrackModelParseError: Error {
     case results(json: Any)
     case image(image: Any)
 }
@@ -46,36 +45,4 @@ class Soundtrack {
             return nil
         }
     }
-    
-    static func buildSoundtrackArray(from data: Data) -> [Soundtrack]? {
-        var soundtracksToReturn: [Soundtrack]? = []
-        
-        do {
-            let jsonData: Any = try JSONSerialization.jsonObject(with: data, options: [])
-            
-            guard let response: [String : AnyObject] = jsonData as? [String : AnyObject],
-                let albums = response["albums"] as? [String: AnyObject],
-                let items = albums["items"] as? [[String: AnyObject]] else {
-                    throw AlbumModelParseError.results(json: jsonData)
-            }
-            
-            for soundtrackDict in items {
-                if let thisSoundtrack = try Soundtrack(withDict: soundtrackDict) {
-                    soundtracksToReturn?.append(thisSoundtrack)
-                }
-            }
-        }
-        catch let AlbumModelParseError.results(json: json)  {
-            print("Error encountered with parsing 'album' or 'items' key for object: \(json)")
-        }
-        catch let AlbumModelParseError.image(image: im)  {
-            print("Error encountered with parsing 'image': \(im)")
-        }
-        catch {
-            print("Unknown parsing error")
-        }
-        
-        return soundtracksToReturn
-    }
-
 }

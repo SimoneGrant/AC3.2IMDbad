@@ -11,8 +11,6 @@ import UIKit
 class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout  {
     
     var thisMovie: Movie!
-    
-    var soundtracks: [Soundtrack]! = []
 
     @IBOutlet weak var fullMovieImageView: UIImageView!
     @IBOutlet weak var fullMovieTitileLabel: UILabel!
@@ -20,10 +18,9 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         loadFullMovieData()
         loadSoundtrackData()
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "imdb", style: .plain, target: self, action: #selector(goToIMDb))
     }
     
@@ -31,7 +28,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
         
         self.fullMovieImageView.image = #imageLiteral(resourceName: "loadingImage")
         self.fullMovieTitileLabel.text = "... loading info"
-        
         
         // CHECK HERE TO SEE IF THIS MOVIE ALREADY HAS A FULL MOVIE BEFORE API CALL
    
@@ -41,7 +37,8 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
             
             APIManager.manager.getData(endPoint: fullMovieAPIEndpoint) { (data: Data?) in
                 guard let unwrappedData = data else { return }
-                self.thisMovie.fullInfo = FullMovie.getFullMovie(from: unwrappedData)
+                self.thisMovie.fullInfo = Movie.getFullMovie(from: unwrappedData)
+               
                 DispatchQueue.main.async {
                     print("*****************FULL MOVIE*****************************")
                     dump(self.thisMovie.fullInfo)
@@ -70,24 +67,27 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
             } else {
                 self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
             }
-
-            // refactor the duplicate oulet setup into a method
         }
         
     }
     
     func loadSoundtrackData() {
-        let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisMovie.briefInfo.titleSearchString)&type=album&limit=50"
-        APIManager.manager.getData(endPoint: soundtrackAPIEndpoint) { (data: Data?) in
-            guard let unwrappedData = data else { return }
-            self.soundtracks = Soundtrack.buildSoundtrackArray(from: unwrappedData)
-            if self.soundtracks.count > 0 {
-                print("________________________ This is the soundtrack! ______________________________")
-                dump(self.soundtracks[0])
-            } else {
-                print("____________________ NO SOUNDTRACKS___________________")
+        
+        if thisMovie.soundtracks == nil {
+            
+            let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisMovie.briefInfo.titleSearchString)&type=album&limit=50"
+            APIManager.manager.getData(endPoint: soundtrackAPIEndpoint) { (data: Data?) in
+                guard let unwrappedData = data else { return }
+                self.thisMovie.soundtracks = Movie.buildSoundtrackArray(from: unwrappedData)
+                if (self.thisMovie.soundtracks?.count)! > 0 {
+                    print("________________________ This is the soundtrack! ______________________________")
+                    dump(self.thisMovie.soundtracks?[0])
+                } else {
+                    print("____________________ NO SOUNDTRACKS___________________")
+                }
             }
         }
+        
     }
     
     @IBAction func goToIMDb(_ sender: UIButton) {
@@ -95,8 +95,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
         guard let url = URL(string: imdbString) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    
-    
+
     func bulidFullMovieLabelText(withFullMovie tfm: FullMovie) -> String {
         return "\(tfm.year), Rated: \(tfm.rated), Runtime: \(tfm.runtime), IMDb Rating: \(tfm.imdbRating)\nGenre: \(tfm.genre)\nCast: \(tfm.cast)\nSummary:   \(tfm.plot)"
     }
@@ -113,12 +112,13 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return soundtracks.count
+        return thisMovie.soundtracks?.count ?? 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.soundtrackReuseIdentifier, for: indexPath) as! SoundtrackCollectionViewCell
-        let thisSoundtrack = soundtracks[indexPath.item]
+        guard let thisSoundtrack = thisMovie.soundtracks?[indexPath.item] else { return cell }
         
         cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
         
@@ -140,7 +140,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //2
+        
         let paddingSpace = sectionInsets.left * (itemsPerColumn + 1)
         let availableHeight = view.frame.width - paddingSpace
         let heightPerItem = availableHeight / itemsPerColumn
@@ -160,43 +160,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
         return sectionInsets.left
     }
 
-
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let thisBriefMovie = briefMovies[indexPath.item]
-//        let thisFullMovieAPIEndpoint = self.fullMovieAPIEndpoint + thisBriefMovie.imdbID
-//        
-//        APIManager.manager.getData(endPoint: thisFullMovieAPIEndpoint) { (data: Data?) in
-//            guard let unwrappedData = data else { return }
-//            let thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
-//            dump(thisFullMovie)
-//        }
-//        performSegue(withIdentifier: fullMovieDetailSegue, sender: thisBriefMovie)
-//    }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == fullMovieDetailSegue {
-//            let destinationViewController = segue.destination as! FullMovieDetailViewController
-//            let thisBriefMovie = sender as! BriefMovie
-//            
-//            destinationViewController.thisBriefMovie = thisBriefMovie
-//        }
-//    }
-//    
-//    
-
-
-    
-    
-    // MARK: OLD CODE PIECES
-    
-    //      Biulds albumArray
-    
-    //        let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisBriefMovie.titleSearchString)&type=album&limit=50"
-    //        APIManager.manager.getData(endPoint: soundtrackAPIEndpoint) { (data: Data?) in
-    //            guard let unwrappedData = data else { return }
-    //            let arrayOfSoundtracks = Soundtrack.buildSoundtrackArray(from: unwrappedData)
-    //            dump(arrayOfSoundtracks)
-    //        }
 
 }
 

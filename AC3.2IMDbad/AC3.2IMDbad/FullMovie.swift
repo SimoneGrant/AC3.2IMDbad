@@ -7,7 +7,10 @@
 //
 
 import Foundation
-import UIKit
+
+enum FullMovieModelParseError: Error {
+    case results(json: Any)
+}
 
 class FullMovie {
     
@@ -23,8 +26,6 @@ class FullMovie {
     
     var posterData: Data?
     
-    var soundtracks: [Soundtrack]?
-    
     init(title: String, year: String, genre: String, runtime: String, plot: String, posterURL: String, cast: String, imdbRating: String, rated: String) {
         self.title = title
         self.year = year
@@ -37,7 +38,7 @@ class FullMovie {
         self.rated = rated
     }
     
-    convenience init?(withDict: [String: String]) {
+    convenience init?(withDict: [String: String]) throws {
         if let fmTitle = withDict["Title"],
             let fmYear = withDict["Year"],
             let fmGenre = withDict["Genre"],
@@ -52,23 +53,6 @@ class FullMovie {
         } else {
             return nil
         }
-    }
-    
-    static func getFullMovie(from data: Data) -> FullMovie? {
-        
-        do {
-            let movieJSONData: Any = try JSONSerialization.jsonObject(with: data, options: [])
-            guard let movieDict = movieJSONData as? [String: String] else { print("\n\n\n\n\n______________________\n\n"); return nil }
-            
-            let thisFullMovie = FullMovie(withDict: movieDict)
-            print(thisFullMovie)
-            return thisFullMovie
-            
-        }
-        catch let error as NSError {
-            print("Error occurred while parsing data: \(error.localizedDescription)\n\n\n\n\n\n_____________________________________")
-        }
-        return nil
     }
     
 }

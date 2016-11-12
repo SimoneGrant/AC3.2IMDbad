@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     let briefMovieAPIEndpoint = "https://www.omdbapi.com/?s="
@@ -26,15 +24,17 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         loadData()
     }
     
     func loadData() {
-        
         APIManager.manager.getData(endPoint: briefMovieAPIEndpoint + searchWord) { (data: Data?) in
             guard let unwrappedData = data else { return }
-            self.movies = Movie.buildMovieArray(from: unwrappedData)!
+            if let theseMovies = Movie.buildMovieArray(from: unwrappedData) {
+                self.movies = theseMovies
+            } else {
+                self.movies = [Movie]()
+            }
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
             }
@@ -47,7 +47,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         self.searchWord = allTextFieldText.replacingOccurrences(of: " ", with: "%20")
         
         loadData()
-        
         return true
     }
 
@@ -66,7 +65,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.BriefMovieReuseIdentifier, for: indexPath) as! BriefMovieCollectionViewCell
         let thisMovie = movies[indexPath.item]
         cell.briefMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
-
         cell.briefMovieTextLabel.text = "\(thisMovie.briefInfo.title)\n\(thisMovie.briefInfo.year)"
         
         APIManager.manager.getData(endPoint: thisMovie.briefInfo.poster) { (data: Data?) in
@@ -112,40 +110,5 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         return sectionInsets.left
     }
     
-    
-    
-    
-
-
-    
-    
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }

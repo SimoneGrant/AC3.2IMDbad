@@ -9,9 +9,6 @@
 import UIKit
 
 class SoundtrackCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var soundtrackImageView: UIImageView!
-    
     @IBOutlet weak var soundtrackTextLabel: UILabel!
-    
 }
