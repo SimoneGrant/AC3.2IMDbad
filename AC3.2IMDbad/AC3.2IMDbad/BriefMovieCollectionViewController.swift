@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     let briefMovieAPIEndpoint = "https://www.omdbapi.com/?s="
@@ -22,19 +20,21 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
-    var briefMovies = [BriefMovie]()
+    var movies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         loadData()
     }
     
     func loadData() {
-        
         APIManager.manager.getData(endPoint: briefMovieAPIEndpoint + searchWord) { (data: Data?) in
             guard let unwrappedData = data else { return }
-            self.briefMovies = BriefMovie.buildBriefMovieArray(from: unwrappedData)!
+            if let theseMovies = Movie.buildMovieArray(from: unwrappedData) {
+                self.movies = theseMovies
+            } else {
+                self.movies = [Movie]()
+            }
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
             }
@@ -47,11 +47,8 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         self.searchWord = allTextFieldText.replacingOccurrences(of: " ", with: "%20")
         
         loadData()
-        
         return true
     }
-
-
 
 
     // MARK: UICollectionViewDataSource
@@ -60,18 +57,17 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return briefMovies.count
+        return movies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.BriefMovieReuseIdentifier, for: indexPath) as! BriefMovieCollectionViewCell
-        let thisBriefMovie = briefMovies[indexPath.item]
-
-        cell.briefMovieTextLabel.text = "\(thisBriefMovie.title)\n\(thisBriefMovie.year)"
+        let thisMovie = movies[indexPath.item]
+        cell.briefMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+        cell.briefMovieTextLabel.text = "\(thisMovie.briefInfo.title)\n\(thisMovie.briefInfo.year)"
         
-        APIManager.manager.getData(endPoint: thisBriefMovie.poster) { (data: Data?) in
+        APIManager.manager.getData(endPoint: thisMovie.briefInfo.poster) { (data: Data?) in
             guard let unwrappedData = data else { return }
             DispatchQueue.main.async {
                 cell.briefMovieImageView?.image = UIImage(data: unwrappedData)
@@ -82,33 +78,23 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let thisBriefMovie = briefMovies[indexPath.item]
-        let thisFullMovieAPIEndpoint = self.fullMovieAPIEndpoint + thisBriefMovie.imdbID
-        
-        APIManager.manager.getData(endPoint: thisFullMovieAPIEndpoint) { (data: Data?) in
-            guard let unwrappedData = data else { return }
-            let thisFullMovie = FullMovie.getFullMovie(from: unwrappedData)
-            dump(thisFullMovie)
-        }
-        performSegue(withIdentifier: fullMovieDetailSegue, sender: thisBriefMovie)
+        let thisMovie = movies[indexPath.item]
+        performSegue(withIdentifier: fullMovieDetailSegue, sender: thisMovie)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == fullMovieDetailSegue {
             let destinationViewController = segue.destination as! FullMovieDetailViewController
-            let thisBriefMovie = sender as! BriefMovie
-            
-            destinationViewController.thisBriefMovie = thisBriefMovie
+            let thisMovie = sender as! Movie
+            destinationViewController.thisMovie = thisMovie
         }
     }
 
 
     // MARK: UICollectionViewDelegate
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //2
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
@@ -116,52 +102,13 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         return CGSize(width: widthPerItem, height: widthPerItem * 1.7)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
     
-    
-    
-    
-
-
-    
-    
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }

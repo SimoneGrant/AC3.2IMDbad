@@ -9,9 +9,6 @@
 import UIKit
 
 class BriefMovieCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var briefMovieImageView: UIImageView!
-    
-    
     @IBOutlet weak var briefMovieTextLabel: UILabel!
 }
