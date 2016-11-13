@@ -49,7 +49,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         searchBar.searchBarStyle = UISearchBarStyle.minimal
         searchBar.isTranslucent = true
         searchBar.showsCancelButton = false
-        searchBar.showsSearchResultsButton = true
+        searchBar.showsSearchResultsButton = false
         searchBar.placeholder = "Enter a movie to search"
         searchBar.delegate = self
         searchBar.barTintColor = UIColor(red: 130/255, green: 0/255, blue: 13/255, alpha: 1.0) /* #82000d */
