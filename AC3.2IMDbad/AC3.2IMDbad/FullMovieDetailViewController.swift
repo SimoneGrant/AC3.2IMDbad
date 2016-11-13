@@ -12,13 +12,15 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     
     var thisMovie: Movie!
 
+    @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
     @IBOutlet weak var fullMovieTitileLabel: UILabel!
     @IBOutlet weak var soundtrackCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         loadFullMovieData()
         loadSoundtrackData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "imdb", style: .plain, target: self, action: #selector(goToIMDb))
@@ -80,6 +82,9 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                 guard let unwrappedData = data else { return }
                 self.thisMovie.soundtracks = Movie.buildSoundtrackArray(from: unwrappedData)
                 if (self.thisMovie.soundtracks?.count)! > 0 {
+                    DispatchQueue.main.async {
+                        self.soundtrackCollectionView.reloadData()
+                    }
                     print("________________________ This is the soundtrack! ______________________________")
                     dump(self.thisMovie.soundtracks?[0])
                 } else {
@@ -110,15 +115,35 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return thisMovie.soundtracks?.count ?? 3
+        
+        
+        
+        if thisMovie.soundtracks != nil {
+            if (thisMovie.soundtracks?.count)! > 0 {
+                return (thisMovie.soundtracks?.count)!
+            } else {
+                self.soundtrackCollectionView.backgroundView?.isHidden = false
+                return 0
+            }
+        } else {
+            return 0
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.soundtrackReuseIdentifier, for: indexPath) as! SoundtrackCollectionViewCell
+        
+        
+        guard (thisMovie.soundtracks?.count)! > 0 else {
+            return cell
+        }
         guard let thisSoundtrack = thisMovie.soundtracks?[indexPath.item] else { return cell }
         
+        
         cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
+        
         
         APIManager.manager.getData(endPoint: thisSoundtrack.images[0].urlString) { (data: Data?) in
             guard let unwrappedData = data else { return }
