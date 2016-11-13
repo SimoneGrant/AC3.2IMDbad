@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout  {
+class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource  {
     
     var soundtracks: [Soundtrack]! = []
     var thisFullMovie: FullMovie!
@@ -51,6 +51,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
     }
     
     func loadSoundtrackData() {
+        //let escapedString = thisBriefMovie.title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisBriefMovie.titleSearchString)&type=album&limit=50"
         APIManager.manager.getData(endPoint: soundtrackAPIEndpoint) { (data: Data?) in
             guard let unwrappedData = data else { return }
@@ -58,6 +59,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
             if self.soundtracks.count > 0 {
                 print("________________________ This is the soundtrack! ______________________________")
                 dump(self.soundtracks[0])
+                
             } else {
                 print("____________________ NO SOUNDTRACKS___________________")
             }
@@ -85,18 +87,17 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegateF
         return 1
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return soundtracks.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.soundtrackReuseIdentifier, for: indexPath) as! SoundtrackCollectionViewCell
         let thisSoundtrack = soundtracks[indexPath.item]
         
-        cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
+        //cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
         
-        APIManager.manager.getData(endPoint: thisSoundtrack.images[2].urlString) { (data: Data?) in
+        APIManager.manager.getData(endPoint: thisSoundtrack.images[0].urlString) { (data: Data?) in
             guard let unwrappedData = data else { return }
             DispatchQueue.main.async {
                 cell.soundtrackImageView?.image = UIImage(data: unwrappedData)

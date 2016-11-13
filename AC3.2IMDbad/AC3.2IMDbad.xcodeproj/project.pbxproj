@@ -75,6 +75,7 @@
 				DEAB71931DD24938003B3AF5 /* Models */,
 				DEAB719B1DD249F0003B3AF5 /* Networking */,
 				DEAB71971DD24971003B3AF5 /* View Controllers */,
+				E3BA5DFC1DD78E4D00E3D895 /* View Cells */,
 				DEAB71941DD24949003B3AF5 /* UI */,
 				DEAB71981DD2499D003B3AF5 /* Supporting Files */,
 			);
@@ -107,8 +108,6 @@
 			children = (
 				DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */,
 				DE4828FC1DD3BA6E007768C2 /* FullMovieDetailViewController.swift */,
-				DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */,
-				DEBDAB2E1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift */,
 				DEAB71951DD24969003B3AF5 /* BriefMovieTableViewController.swift */,
 			);
 			name = "View Controllers";
@@ -129,6 +128,15 @@
 				DEAB71991DD249DF003B3AF5 /* APIManager.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		E3BA5DFC1DD78E4D00E3D895 /* View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */,
+				DEBDAB2E1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift */,
+			);
+			name = "View Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
