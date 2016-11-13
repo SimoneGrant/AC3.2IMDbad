@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D2A32741DD744C3001C011E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2A32731DD744C3001C011E /* HomeViewController.swift */; };
+		7D2A32761DD74867001C011E /* IMDbad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2A32751DD74867001C011E /* IMDbad.jpg */; };
+		7D2A32781DD74F0B001C011E /* Batman-BenAffleck.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2A32771DD74F0B001C011E /* Batman-BenAffleck.jpg */; };
+		7D2A327A1DD7718D001C011E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2A32791DD7718D001C011E /* HomeCollectionViewCell.swift */; };
+		7D4BED371DD815450044C05D /* film.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BED361DD815450044C05D /* film.jpg */; };
+		7DF4E14A1DD7C4DB00830FC8 /* logo3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DF4E1481DD7C4DB00830FC8 /* logo3.jpg */; };
 		DE4828F91DD3A960007768C2 /* BriefMovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */; };
 		DE4828FB1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */; };
 		DE4828FD1DD3BA6E007768C2 /* FullMovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4828FC1DD3BA6E007768C2 /* FullMovieDetailViewController.swift */; };
@@ -24,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D2A32731DD744C3001C011E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7D2A32751DD74867001C011E /* IMDbad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMDbad.jpg; path = ../../../IMDbad.jpg; sourceTree = "<group>"; };
+		7D2A32771DD74F0B001C011E /* Batman-BenAffleck.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Batman-BenAffleck.jpg"; path = "../../../../Downloads/Batman-BenAffleck.jpg"; sourceTree = "<group>"; };
+		7D2A32791DD7718D001C011E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7D4BED361DD815450044C05D /* film.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = film.jpg; path = ../../../film.jpg; sourceTree = "<group>"; };
+		7DF4E1481DD7C4DB00830FC8 /* logo3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = logo3.jpg; path = ../../../logo3.jpg; sourceTree = "<group>"; };
 		DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewController.swift; sourceTree = "<group>"; };
 		DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE4828FC1DD3BA6E007768C2 /* FullMovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMovieDetailViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +117,8 @@
 		DEAB71971DD24971003B3AF5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7D2A32731DD744C3001C011E /* HomeViewController.swift */,
+				7D2A32791DD7718D001C011E /* HomeCollectionViewCell.swift */,
 				DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */,
 				DE4828FC1DD3BA6E007768C2 /* FullMovieDetailViewController.swift */,
 				DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */,
@@ -118,7 +132,11 @@
 			isa = PBXGroup;
 			children = (
 				DEAB717D1DD248CB003B3AF5 /* AppDelegate.swift */,
+				7DF4E1481DD7C4DB00830FC8 /* logo3.jpg */,
+				7D2A32751DD74867001C011E /* IMDbad.jpg */,
+				7D4BED361DD815450044C05D /* film.jpg */,
 				DEAB71891DD248CB003B3AF5 /* Info.plist */,
+				7D2A32771DD74F0B001C011E /* Batman-BenAffleck.jpg */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -191,7 +209,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEAB71881DD248CB003B3AF5 /* LaunchScreen.storyboard in Resources */,
+				7D2A32781DD74F0B001C011E /* Batman-BenAffleck.jpg in Resources */,
+				7D4BED371DD815450044C05D /* film.jpg in Resources */,
+				7DF4E14A1DD7C4DB00830FC8 /* logo3.jpg in Resources */,
 				DEAB71851DD248CB003B3AF5 /* Assets.xcassets in Resources */,
+				7D2A32761DD74867001C011E /* IMDbad.jpg in Resources */,
 				DEAB71831DD248CB003B3AF5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,12 +230,14 @@
 				DEAB71961DD24969003B3AF5 /* BriefMovieTableViewController.swift in Sources */,
 				DE4828FD1DD3BA6E007768C2 /* FullMovieDetailViewController.swift in Sources */,
 				DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */,
+				7D2A327A1DD7718D001C011E /* HomeCollectionViewCell.swift in Sources */,
 				DEAB719D1DD263C6003B3AF5 /* Soundtrack.swift in Sources */,
 				DEAB719F1DD270AD003B3AF5 /* AlbumImage.swift in Sources */,
 				DEAB717E1DD248CB003B3AF5 /* AppDelegate.swift in Sources */,
 				DE4828F91DD3A960007768C2 /* BriefMovieCollectionViewController.swift in Sources */,
 				DEAB71901DD24912003B3AF5 /* BriefMovie.swift in Sources */,
 				DEBDAB2F1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift in Sources */,
+				7D2A32741DD744C3001C011E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

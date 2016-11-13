@@ -28,6 +28,11 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         super.viewDidLoad()
 
         loadData()
+        
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backButton")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backButton")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+    
     }
     
     func loadData() {
