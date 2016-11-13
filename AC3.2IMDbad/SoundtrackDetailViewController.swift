@@ -11,10 +11,15 @@ import UIKit
 class SoundtrackDetailViewController: UIViewController {
     var thisSoundtrack: Soundtrack!
     
+    @IBOutlet weak var soundtrackImageView: UIImageView!
     
+    @IBOutlet weak var soundtrackTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        soundtrackTextLabel.text = thisSoundtrack.title
+        //soundtrackImageView.image = UIImage(data: thisSoundtrack.images[0].imageData!)
 
         // Do any additional setup after loading the view.
     }

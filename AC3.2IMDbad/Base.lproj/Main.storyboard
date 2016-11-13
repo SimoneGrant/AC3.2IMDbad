@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F2O-8F-rT5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F2O-8F-rT5">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -119,12 +119,12 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <imageView key="backgroundView" hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noAlbumFound" id="Dwd-k2-cZd">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="soundtrackCell" id="Y6a-XK-kzL" customClass="SoundtrackCollectionViewCell" customModule="AC3_2IMDbad" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="25" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -150,7 +150,6 @@
                                         <connections>
                                             <outlet property="soundtrackImageView" destination="EXK-uV-XfC" id="DzR-Kk-0ek"/>
                                             <outlet property="soundtrackTextLabel" destination="H4k-OH-Chj" id="t0M-Db-Gwv"/>
-                                            <segue destination="44g-kb-rKf" kind="show" identifier="soundtrackDetailSegue" id="mKG-PU-ITS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -178,6 +177,7 @@
                         <outlet property="FullMovieTitileLabel" destination="3hd-Wj-bkh" id="UzG-7c-Ust"/>
                         <outlet property="noAlbumFoundImage" destination="Dwd-k2-cZd" id="42C-KS-HKR"/>
                         <outlet property="soundtrackCollectionView" destination="YJU-Vi-A3u" id="HWR-f9-o9K"/>
+                        <segue destination="44g-kb-rKf" kind="show" identifier="soundtrackDetailSegue" id="aKW-bf-7bz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aek-lz-V29" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,13 +200,24 @@
                                 <frame key="frameInset" minX="63" minY="88" width="249" height="237"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFU-u6-8Xt">
+                                <frame key="frameInset" minX="86" minY="444" width="194" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="soundtrackImageView" destination="dZa-pX-rbW" id="9vR-dp-7Gz"/>
+                        <outlet property="soundtrackTextLabel" destination="eFU-u6-8Xt" id="Nfj-Bs-ZGt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bz-TM-VOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4666" y="125"/>
+            <point key="canvasLocation" x="4912.8000000000002" y="127.28635682158921"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GCD-xO-pFe">

@@ -12,6 +12,7 @@ class AlbumImage {
     let height: Int
     let width: Int
     let urlString: String
+    var imageData: Data? 
     
     init?(from dictionary: [String:AnyObject]) {
         if let height = dictionary["height"] as? Int,

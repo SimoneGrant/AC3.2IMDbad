@@ -11,6 +11,8 @@ import UIKit
 class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
     var thisMovie: Movie!
+    
+    let soundtrackDetailSegue = "soundtrackDetailSegue"
 
     @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
@@ -25,6 +27,8 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         loadSoundtrackData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "imdb", style: .plain, target: self, action: #selector(goToIMDb))
     }
+    
+    
     
     func loadFullMovieData() {
         
@@ -85,7 +89,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     DispatchQueue.main.async {
                         self.soundtrackCollectionView.reloadData()
                     }
-                    print("________________________ This is the soundtrack! ______________________________")
+                    print("________________________ This is the first album in soundtracks ______________________________")
                     dump(self.thisMovie.soundtracks?[0])
                 } else {
                     print("____________________ NO SOUNDTRACKS___________________")
@@ -116,8 +120,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        
-        
         if thisMovie.soundtracks != nil {
             if (thisMovie.soundtracks?.count)! > 0 {
                 return (thisMovie.soundtracks?.count)!
@@ -135,26 +137,48 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.soundtrackReuseIdentifier, for: indexPath) as! SoundtrackCollectionViewCell
         
-        
-        guard (thisMovie.soundtracks?.count)! > 0 else {
-            return cell
-        }
+        guard (thisMovie.soundtracks?.count)! > 0 else { return cell }
         guard let thisSoundtrack = thisMovie.soundtracks?[indexPath.item] else { return cell }
-        
+        let thisSoundtrackAlbumImage = thisSoundtrack.images[0]
         
         cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
         
-        
-        APIManager.manager.getData(endPoint: thisSoundtrack.images[0].urlString) { (data: Data?) in
-            guard let unwrappedData = data else { return }
-            DispatchQueue.main.async {
-                cell.soundtrackImageView?.image = UIImage(data: unwrappedData)
-                cell.setNeedsLayout()
+        if thisSoundtrackAlbumImage.imageData == nil {
+            APIManager.manager.getData(endPoint: thisSoundtrackAlbumImage.urlString) { (data: Data?) in
+                guard let unwrappedData = data else { return }
+                //thisSoundtrackAlbumImage.imageData = unwrappedData
+                DispatchQueue.main.async {
+                    cell.soundtrackImageView?.image = UIImage(data: unwrappedData)
+                    cell.setNeedsLayout()
+                }
             }
+        } else {
+            cell.soundtrackImageView?.image = UIImage(data: thisSoundtrackAlbumImage.imageData!)
         }
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let thisSoundtrack = thisMovie.soundtracks?[indexPath.item]
+        print("----------------- index path item \(indexPath.item)")
+        print("----------------- index path row \(indexPath.row)")
+        print("----------------- \(thisMovie.soundtracks?[0].title)")
+
+        dump(thisSoundtrack)
+        
+        performSegue(withIdentifier: soundtrackDetailSegue, sender: thisSoundtrack)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == soundtrackDetailSegue {
+            let destinationViewController = segue.destination as! SoundtrackDetailViewController
+            let thisSoundtrack = sender as! Soundtrack
+            destinationViewController.thisSoundtrack = thisSoundtrack
+        }
+    }
+    
+        
     // MARK: UICollectionViewDelegate
     
     private let itemsPerColumn = CGFloat(1)
