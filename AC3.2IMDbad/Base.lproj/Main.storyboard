@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F2O-8F-rT5">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F2O-8F-rT5">
->>>>>>> 1df1137c1749b529a6c48ba49200b698ab65f97b
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -17,11 +13,7 @@
         <scene sceneID="aj5-I5-j22">
             <objects>
                 <collectionViewController id="dho-qQ-Sbd" customClass="BriefMovieCollectionViewController" customModule="AC3_2IMDbad" customModuleProvider="target" sceneMemberID="viewController">
-<<<<<<< HEAD
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Bin-O4-92b">
-=======
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Bin-O4-92b">
->>>>>>> 1df1137c1749b529a6c48ba49200b698ab65f97b
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,13 +149,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-<<<<<<< HEAD
-=======
                                 <connections>
                                     <outlet property="dataSource" destination="7vd-5Q-ayh" id="pRZ-Qr-BII"/>
                                     <outlet property="delegate" destination="7vd-5Q-ayh" id="vZ4-3V-6dc"/>
                                 </connections>
->>>>>>> 1df1137c1749b529a6c48ba49200b698ab65f97b
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

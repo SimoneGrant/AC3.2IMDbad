@@ -120,11 +120,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         
         cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
         
-<<<<<<< HEAD
-        APIManager.manager.getData(endPoint: thisSoundtrack.images[2].urlString) { (data: Data?) in
-=======
         APIManager.manager.getData(endPoint: thisSoundtrack.images[0].urlString) { (data: Data?) in
->>>>>>> 1df1137c1749b529a6c48ba49200b698ab65f97b
             guard let unwrappedData = data else { return }
             DispatchQueue.main.async {
                 cell.soundtrackImageView?.image = UIImage(data: unwrappedData)
@@ -142,11 +138,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let paddingSpace = sectionInsets.left * (itemsPerColumn + 1)
-<<<<<<< HEAD
-        let availableHeight = view.frame.width - paddingSpace
-=======
         let availableHeight = collectionView.frame.height - paddingSpace
->>>>>>> 1df1137c1749b529a6c48ba49200b698ab65f97b
         let heightPerItem = availableHeight / itemsPerColumn
         
         return CGSize(width: heightPerItem, height: heightPerItem)
