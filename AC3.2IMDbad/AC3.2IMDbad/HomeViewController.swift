@@ -36,7 +36,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         let imageView = UIImageView(frame: CGRect(x: 200, y: 50, width: myNicelLogoWidth, height: myNiceLogoHeight))
         imageView.contentMode = .scaleAspectFit
         //imageView.center = navigationController?.center //the put your image at the center
-        let image = UIImage(named: "logo3.jpg")
+        let image = UIImage(named: "logo4.jpg")
         imageView.image = image
         navigationItem.titleView = imageView
     }
@@ -86,7 +86,8 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviesCell", for: indexPath) as! HomeCollectionViewCell
         cell.backgroundColor = UIColor.clear
-        cell.briefMovie = self.briefMovies[indexPath.item]
+        let title = self.briefMovies[indexPath.item]
+        cell.briefMovie = title
         
         
         return cell

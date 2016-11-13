@@ -12,6 +12,12 @@
 		7D2A32781DD74F0B001C011E /* Batman-BenAffleck.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2A32771DD74F0B001C011E /* Batman-BenAffleck.jpg */; };
 		7D2A327A1DD7718D001C011E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2A32791DD7718D001C011E /* HomeCollectionViewCell.swift */; };
 		7D4BED371DD815450044C05D /* film.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BED361DD815450044C05D /* film.jpg */; };
+		7DB1052F1DD8D17900B41AA0 /* Atami-Display.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1052B1DD8D17900B41AA0 /* Atami-Display.otf */; };
+		7DB105301DD8D17A00B41AA0 /* Atami-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1052C1DD8D17900B41AA0 /* Atami-Light.otf */; };
+		7DB105311DD8D17A00B41AA0 /* Atami-Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1052D1DD8D17900B41AA0 /* Atami-Oblique.otf */; };
+		7DB105321DD8D17A00B41AA0 /* Atami-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1052E1DD8D17900B41AA0 /* Atami-Regular.otf */; };
+		7DB105341DD8D18E00B41AA0 /* Atami-LightOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB105331DD8D18E00B41AA0 /* Atami-LightOblique.otf */; };
+		7DB105361DD8DE3F00B41AA0 /* logo4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DB105351DD8DE3F00B41AA0 /* logo4.jpg */; };
 		7DF4E14A1DD7C4DB00830FC8 /* logo3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DF4E1481DD7C4DB00830FC8 /* logo3.jpg */; };
 		DE4828F91DD3A960007768C2 /* BriefMovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */; };
 		DE4828FB1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */; };
@@ -35,6 +41,12 @@
 		7D2A32771DD74F0B001C011E /* Batman-BenAffleck.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Batman-BenAffleck.jpg"; path = "../../../../Downloads/Batman-BenAffleck.jpg"; sourceTree = "<group>"; };
 		7D2A32791DD7718D001C011E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D4BED361DD815450044C05D /* film.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = film.jpg; path = ../../../film.jpg; sourceTree = "<group>"; };
+		7DB1052B1DD8D17900B41AA0 /* Atami-Display.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Atami-Display.otf"; path = "../../../Atami - Full Font 2/Atami-Display.otf"; sourceTree = "<group>"; };
+		7DB1052C1DD8D17900B41AA0 /* Atami-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Atami-Light.otf"; path = "../../../Atami - Full Font 2/Atami-Light.otf"; sourceTree = "<group>"; };
+		7DB1052D1DD8D17900B41AA0 /* Atami-Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Atami-Oblique.otf"; path = "../../../Atami - Full Font 2/Atami-Oblique.otf"; sourceTree = "<group>"; };
+		7DB1052E1DD8D17900B41AA0 /* Atami-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Atami-Regular.otf"; path = "../../../Atami - Full Font 2/Atami-Regular.otf"; sourceTree = "<group>"; };
+		7DB105331DD8D18E00B41AA0 /* Atami-LightOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Atami-LightOblique.otf"; path = "../../../Atami - Full Font 2/Atami-LightOblique.otf"; sourceTree = "<group>"; };
+		7DB105351DD8DE3F00B41AA0 /* logo4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = logo4.jpg; path = ../../../logo4.jpg; sourceTree = "<group>"; };
 		7DF4E1481DD7C4DB00830FC8 /* logo3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = logo3.jpg; path = ../../../logo3.jpg; sourceTree = "<group>"; };
 		DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewController.swift; sourceTree = "<group>"; };
 		DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefMovieCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -131,6 +143,12 @@
 		DEAB71981DD2499D003B3AF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DB105331DD8D18E00B41AA0 /* Atami-LightOblique.otf */,
+				7DB105351DD8DE3F00B41AA0 /* logo4.jpg */,
+				7DB1052B1DD8D17900B41AA0 /* Atami-Display.otf */,
+				7DB1052C1DD8D17900B41AA0 /* Atami-Light.otf */,
+				7DB1052D1DD8D17900B41AA0 /* Atami-Oblique.otf */,
+				7DB1052E1DD8D17900B41AA0 /* Atami-Regular.otf */,
 				DEAB717D1DD248CB003B3AF5 /* AppDelegate.swift */,
 				7DF4E1481DD7C4DB00830FC8 /* logo3.jpg */,
 				7D2A32751DD74867001C011E /* IMDbad.jpg */,
@@ -208,13 +226,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DB105311DD8D17A00B41AA0 /* Atami-Oblique.otf in Resources */,
 				DEAB71881DD248CB003B3AF5 /* LaunchScreen.storyboard in Resources */,
+				7DB105321DD8D17A00B41AA0 /* Atami-Regular.otf in Resources */,
 				7D2A32781DD74F0B001C011E /* Batman-BenAffleck.jpg in Resources */,
 				7D4BED371DD815450044C05D /* film.jpg in Resources */,
 				7DF4E14A1DD7C4DB00830FC8 /* logo3.jpg in Resources */,
 				DEAB71851DD248CB003B3AF5 /* Assets.xcassets in Resources */,
+				7DB105341DD8D18E00B41AA0 /* Atami-LightOblique.otf in Resources */,
+				7DB105361DD8DE3F00B41AA0 /* logo4.jpg in Resources */,
 				7D2A32761DD74867001C011E /* IMDbad.jpg in Resources */,
+				7DB105301DD8D17A00B41AA0 /* Atami-Light.otf in Resources */,
 				DEAB71831DD248CB003B3AF5 /* Main.storyboard in Resources */,
+				7DB1052F1DD8D17900B41AA0 /* Atami-Display.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

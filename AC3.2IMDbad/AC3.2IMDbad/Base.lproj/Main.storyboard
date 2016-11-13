@@ -8,6 +8,14 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Atami-Light.otf">
+            <string>Atami-Light</string>
+        </array>
+        <array key="Atami-Regular.otf">
+            <string>Atami-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Brief Movie Table View Controller-->
         <scene sceneID="cNr-Eb-CI5">
@@ -22,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z1h-Eu-MdE" id="Ume-BG-SxV">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -42,7 +50,7 @@
         <scene sceneID="aj5-I5-j22">
             <objects>
                 <collectionViewController id="dho-qQ-Sbd" customClass="BriefMovieCollectionViewController" customModule="AC3_2IMDbad" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Bin-O4-92b">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Bin-O4-92b">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -220,7 +228,7 @@
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w62-WS-ZW8">
+                                        <visualEffectView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w62-WS-ZW8">
                                             <frame key="frameInset" minX="8" minY="96" width="150" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="3Nn-is-i14">
@@ -231,13 +239,12 @@
                                                 <blurEffect style="extraLight"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FEATURED:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTY-5f-hvT">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FEATURED:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTY-5f-hvT">
                                             <frame key="frameInset" minX="8" minY="96" width="150" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <fontDescription key="fontDescription" name="Atami-Regular" family="Atami" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="shadowColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
                                 </view>
@@ -267,8 +274,8 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find the latest Batman movies" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkP-H6-ehh">
-                                                                <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" name="Atami-Light" family="Atami" pointSize="19"/>
+                                                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -280,7 +287,7 @@
                                                         </constraints>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="65" id="l5B-vY-ghE"/>
+                                                        <constraint firstAttribute="height" constant="67" id="l5B-vY-ghE"/>
                                                     </constraints>
                                                     <blurEffect style="light"/>
                                                 </visualEffectView>
@@ -289,7 +296,7 @@
                                         <constraints>
                                             <constraint firstItem="Ziy-d8-6XL" firstAttribute="leading" secondItem="NP7-7A-I6E" secondAttribute="leading" id="3A7-OH-1gg"/>
                                             <constraint firstItem="P66-GI-K6D" firstAttribute="trailing" secondItem="NP7-7A-I6E" secondAttribute="trailingMargin" constant="8" id="9yg-bm-aWF"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ziy-d8-6XL" secondAttribute="bottom" id="BGE-HY-nWW"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ziy-d8-6XL" secondAttribute="bottom" constant="-2" id="BGE-HY-nWW"/>
                                             <constraint firstItem="P66-GI-K6D" firstAttribute="leading" secondItem="NP7-7A-I6E" secondAttribute="leadingMargin" constant="-8" id="DLL-cU-vQX"/>
                                             <constraint firstItem="P66-GI-K6D" firstAttribute="top" secondItem="NP7-7A-I6E" secondAttribute="topMargin" constant="-8" id="JDN-9k-x3v"/>
                                             <constraint firstItem="P66-GI-K6D" firstAttribute="top" secondItem="NP7-7A-I6E" secondAttribute="topMargin" constant="-8" id="JnA-Gn-naP"/>
@@ -342,7 +349,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iIz-OQ-VM3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QtH-ic-6je">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QtH-ic-6je">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -361,7 +368,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kWu-ZC-ssc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="OfE-7g-K27">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="OfE-7g-K27">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
