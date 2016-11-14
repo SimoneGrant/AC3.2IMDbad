@@ -15,6 +15,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     let soundtrackDetailSegue = "soundtrackDetailSegue"
 
     
+    @IBOutlet weak var fullMovieBackgroundImage: UIImageView!
     @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
     @IBOutlet weak var fullMovieTitileLabel: UILabel!
@@ -28,8 +29,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         loadSoundtrackData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "IMDbButton2"), style: .plain, target: self, action: #selector(goToIMDb))
     
-        
-        
       
     }
     
@@ -58,6 +57,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     self.navigationItem.title = self.thisMovie.fullInfo?.title
                     self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
                     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+                    
 
                 }
                 APIManager.manager.getData(endPoint: self.thisMovie.fullInfo!.posterURL) { (data: Data?) in
@@ -65,6 +65,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     self.thisMovie.fullInfo?.posterData = unwrappedData
                     DispatchQueue.main.async {
                         self.fullMovieImageView.image = UIImage(data: unwrappedData)
+                        self.fullMovieBackgroundImage.image = UIImage(data: unwrappedData)
                         self.view.reloadInputViews()
                     }
                 }
@@ -76,6 +77,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
             
             if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
                 self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
+                self.fullMovieBackgroundImage.image = UIImage(data: fullMoviePosterData)
             } else {
                 self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
             }
@@ -86,7 +88,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     func loadSoundtrackData() {
         
         if thisMovie.soundtracks == nil {
-            
             let soundtrackAPIEndpoint = "https://api.spotify.com/v1/search?q=\(thisMovie.briefInfo.titleSearchString)&type=album&limit=50"
             APIManager.manager.getData(endPoint: soundtrackAPIEndpoint) { (data: Data?) in
                 guard let unwrappedData = data else { return }
@@ -98,6 +99,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     print("________________________ This is the first album in soundtracks ______________________________")
                     dump(self.thisMovie.soundtracks?[0])
                 } else {
+                    self.noAlbumFoundImage.isHidden = false
                     print("____________________ NO SOUNDTRACKS___________________")
                 }
             }
@@ -175,6 +177,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         performSegue(withIdentifier: soundtrackDetailSegue, sender: thisSoundtrack)
         
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == soundtrackDetailSegue {

@@ -27,8 +27,8 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         
+        loadData()
         createSearchBar()
         //createLogo()
         
@@ -84,7 +84,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         
     }
  
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchText = searchBar.text
         let allTextFieldText = searchText
@@ -92,10 +91,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         loadData()
     }
  
- 
- 
-
-    
 
     // MARK: UICollectionViewDataSource
 
