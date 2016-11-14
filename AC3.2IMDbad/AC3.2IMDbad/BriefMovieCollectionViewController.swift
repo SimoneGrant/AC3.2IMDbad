@@ -11,17 +11,20 @@ import UIKit
 class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UISearchBarDelegate {
     
     let briefMovieAPIEndpoint = "https://www.omdbapi.com/?s="
+    
+    var searchController: UISearchController!
+    
+    var searchWord = "batman"
+    
     let fullMovieAPIEndpoint =  "https://www.omdbapi.com/?i="
     let fullMovieDetailSegue =  "fullMovieDetailSegue"
-    var searchController: UISearchController!
-    var searchWord = "batman"
+    
     private let BriefMovieReuseIdentifier = "BriefMovieCell"
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    
     var movies = [Movie]()
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,8 +35,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     }
     
 
-    
-    
     func loadData() {
         APIManager.manager.getData(endPoint: briefMovieAPIEndpoint + searchWord) { (data: Data?) in
             guard let unwrappedData = data else { return }
@@ -52,15 +53,13 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     func createLogo() {
         let myNicelLogoWidth = 150
         let myNiceLogoHeight = 50 //start positioning your logo at 0.0, 0.0
-        let imageView = UIImageView(frame: CGRect(x: 200, y: 150, width: myNicelLogoWidth, height: myNiceLogoHeight))
+        let imageView = UIImageView(frame: CGRect(x: 200, y: 50, width: myNicelLogoWidth, height: myNiceLogoHeight))
         imageView.contentMode = .scaleAspectFit
         //imageView.center = navigationController?.center //the put your image at the center
-     let image = UIImage(named: "logo4.jpg")
-     imageView.image = image
+        let image = UIImage(named: "logo4.jpg")
         imageView.image = image
         navigationItem.titleView = imageView
     }
-    
     
     func createSearchBar() {
         let searchBar = UISearchBar()
@@ -69,8 +68,8 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         searchBar.searchBarStyle = UISearchBarStyle.minimal
         searchBar.isTranslucent = true
         searchBar.showsCancelButton = false
-        //searchBar.showsSearchResultsButton = true
-        searchBar.placeholder = "Search for a movie"
+        searchBar.showsSearchResultsButton = false
+        searchBar.placeholder = "Enter a movie to search"
         searchBar.delegate = self
         searchBar.barTintColor = UIColor(red: 130/255, green: 0/255, blue: 13/255, alpha: 1.0) /* #82000d */
         searchBar.resignFirstResponder()

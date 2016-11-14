@@ -27,7 +27,7 @@
                             <constraint firstItem="VRM-ZV-1mw" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="21o-5O-n5L"/>
                             <constraint firstAttribute="leadingMargin" secondItem="VRM-ZV-1mw" secondAttribute="leading" id="bxm-Co-Gn8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VRM-ZV-1mw" secondAttribute="trailing" id="qlk-4L-Dzp"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="VRM-ZV-1mw" secondAttribute="bottom" constant="243" id="wZe-i9-CJN"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="VRM-ZV-1mw" secondAttribute="bottom" constant="200" id="wZe-i9-CJN"/>
                         </constraints>
                     </view>
                 </viewController>

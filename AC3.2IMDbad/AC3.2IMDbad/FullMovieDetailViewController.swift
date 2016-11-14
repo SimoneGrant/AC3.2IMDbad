@@ -14,17 +14,28 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     
     let soundtrackDetailSegue = "soundtrackDetailSegue"
 
-    //Full Movie
+    
     @IBOutlet weak var fullMovieBackgroundImage: UIImageView!
     @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
-    //@IBOutlet weak var fullMovieTitileLabel: UILabel!
+//    @IBOutlet weak var fullMovieTitileLabel: UILabel!
+    @IBOutlet weak var soundtrackCollectionView: UICollectionView!
+    
     @IBOutlet weak var imdbRating: UILabel!
     @IBOutlet weak var fullMovieYear: UILabel!
-    @IBOutlet weak var fullMovieRating: UILabel!
     @IBOutlet weak var fullMovieDescription: UILabel!
-    //Collection
-    @IBOutlet weak var soundtrackCollectionView: UICollectionView!
+    @IBOutlet weak var fullMovieRating: UILabel!
+    
+    
+    /*
+ 
+     self.imdbRating.text = imdbFullMovieRating
+     self.fullMovieYear.text = self.thisMovie.fullInfo?.year
+     self.fullMovieRating.text = self.thisMovie.fullInfo?.rated
+     self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
+     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+
+ */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +44,16 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         loadFullMovieData()
         loadSoundtrackData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "IMDbButton2"), style: .plain, target: self, action: #selector(goToIMDb))
+       
     
       
     }
     
     
-    
     func loadFullMovieData() {
         
         self.fullMovieImageView.image = #imageLiteral(resourceName: "loadingImage")
-        self.imdbRating.text = "... loading info"
+//        self.fullMovieTitileLabel.text = "... loading info"
         
         // CHECK HERE TO SEE IF THIS MOVIE ALREADY HAS A FULL MOVIE BEFORE API CALL
    
@@ -60,17 +71,8 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     
                     // MIGHT WANNA BANG THAT FULL INFO                \|/
                     self.navigationItem.title = self.thisMovie.fullInfo?.title
-                    
-                    
-                    guard let rating = self.thisMovie.fullInfo?.imdbRating else {return}
-                    let imdbFullMovieRating = "\(rating)/10"
-                    self.imdbRating.text = imdbFullMovieRating
-                    self.fullMovieYear.text = self.thisMovie.fullInfo?.year
-                    self.fullMovieRating.text = self.thisMovie.fullInfo?.rated
-                    self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
+                  self.displayFullMovieInfo()
                     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
-                    
-                    //self.fullMovieDesc.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
                     
 
                 }
@@ -87,8 +89,8 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
             
         } else {
             self.navigationItem.title = self.thisMovie.fullInfo!.title
-            //self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
-            
+//            self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
+           self.displayFullMovieInfo()
             if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
                 self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
                 self.fullMovieBackgroundImage.image = UIImage(data: fullMoviePosterData)
@@ -108,7 +110,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                 self.thisMovie.soundtracks = Movie.buildSoundtrackArray(from: unwrappedData)
                 if (self.thisMovie.soundtracks?.count)! > 0 {
                     DispatchQueue.main.async {
-                        
                         self.soundtrackCollectionView.reloadData()
                     }
                     print("________________________ This is the first album in soundtracks ______________________________")
@@ -126,6 +127,17 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         let imdbString = "http://www.imdb.com/title/" + thisMovie.briefInfo.imdbID
         guard let url = URL(string: imdbString) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    func displayFullMovieInfo() {
+        guard let rating = self.thisMovie.fullInfo?.imdbRating else {return}
+        let imdbFullMovieRating = "IMDb Rating: \(rating)/10"
+        self.imdbRating.text = imdbFullMovieRating
+        self.fullMovieYear.text = "Released: \(self.thisMovie.fullInfo!.year)"
+        self.fullMovieRating.text = "Rated: \(self.thisMovie.fullInfo!.rated)"
+        self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
+        self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+
     }
 
     func bulidFullMovieLabelText(withFullMovie tfm: FullMovie) -> String {
@@ -160,11 +172,11 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.soundtrackReuseIdentifier, for: indexPath) as! SoundtrackCollectionViewCell
         
-        guard (thisMovie.soundtracks?.count)! > 0 else {return cell}
+        guard (thisMovie.soundtracks?.count)! > 0 else { return cell }
         guard let thisSoundtrack = thisMovie.soundtracks?[indexPath.item] else { return cell }
         let thisSoundtrackAlbumImage = thisSoundtrack.images[0]
         
-        cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
+        
         
         if thisSoundtrackAlbumImage.imageData == nil {
             APIManager.manager.getData(endPoint: thisSoundtrackAlbumImage.urlString) { (data: Data?) in
@@ -181,24 +193,26 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let thisSoundtrack = thisMovie.soundtracks?[indexPath.item]
-        print("----------------- index path item \(indexPath.item)")
-        print("----------------- index path row \(indexPath.row)")
-        print("----------------- \(thisMovie.soundtracks?[0].title)")
-
-        dump(thisSoundtrack)
-        
-        performSegue(withIdentifier: soundtrackDetailSegue, sender: thisSoundtrack)
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        let thisSoundtrack = thisMovie.soundtracks?[indexPath.item]
+//        print("----------------- index path item \(indexPath.item)")
+//        print("----------------- index path row \(indexPath.row)")
+//        print("----------------- \(thisMovie.soundtracks?[0].title)")
+//
+//        dump(thisSoundtrack)
+//        
+//        performSegue(withIdentifier: soundtrackDetailSegue, sender: thisSoundtrack)
+//        
+//    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == soundtrackDetailSegue {
             let destinationViewController = segue.destination as! SoundtrackDetailViewController
-            let thisSoundtrack = sender as! Soundtrack
-            destinationViewController.thisSoundtrack = thisSoundtrack
+            if let cell = sender as? UICollectionViewCell,
+                let ip = soundtrackCollectionView.indexPath(for: cell) {
+                destinationViewController.thisSoundtrack = thisMovie.soundtracks?[ip.item]
+            }
         }
     }
     

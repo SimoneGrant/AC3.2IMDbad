@@ -21,7 +21,6 @@
 		DEAB719F1DD270AD003B3AF5 /* AlbumImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB719E1DD270AD003B3AF5 /* AlbumImage.swift */; };
 		DEBDAB2F1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBDAB2E1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift */; };
 		DEE993171DD63C98003F9D0D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE993161DD63C98003F9D0D /* Movie.swift */; };
-		E34B78481DDA05F2002587B2 /* FullMovieGestureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B78471DDA05F2002587B2 /* FullMovieGestureDetailViewController.swift */; };
 		E3BA5E081DD8F75200E3D895 /* SoundtrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA5E071DD8F75200E3D895 /* SoundtrackDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,6 @@
 		DEAB719E1DD270AD003B3AF5 /* AlbumImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImage.swift; sourceTree = "<group>"; };
 		DEBDAB2E1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundtrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEE993161DD63C98003F9D0D /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		E34B78471DDA05F2002587B2 /* FullMovieGestureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMovieGestureDetailViewController.swift; sourceTree = "<group>"; };
 		E3BA5E071DD8F75200E3D895 /* SoundtrackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundtrackDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +74,6 @@
 		DEAB717C1DD248CB003B3AF5 /* AC3.2IMDbad */ = {
 			isa = PBXGroup;
 			children = (
-				E34B78471DDA05F2002587B2 /* FullMovieGestureDetailViewController.swift */,
 				DEAB71931DD24938003B3AF5 /* Models */,
 				DEAB719B1DD249F0003B3AF5 /* Networking */,
 				DEAB71971DD24971003B3AF5 /* View Controllers */,
@@ -89,9 +86,9 @@
 		DEAB71931DD24938003B3AF5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DEAB71911DD24931003B3AF5 /* FullMovie.swift */,
 				DEE993161DD63C98003F9D0D /* Movie.swift */,
 				DEAB718F1DD24912003B3AF5 /* BriefMovie.swift */,
-				DEAB71911DD24931003B3AF5 /* FullMovie.swift */,
 				DEAB719C1DD263C6003B3AF5 /* Soundtrack.swift */,
 				DEAB719E1DD270AD003B3AF5 /* AlbumImage.swift */,
 			);
@@ -113,9 +110,9 @@
 			children = (
 				DE4828F81DD3A960007768C2 /* BriefMovieCollectionViewController.swift */,
 				DE4828FC1DD3BA6E007768C2 /* FullMovieDetailViewController.swift */,
-				E3BA5E071DD8F75200E3D895 /* SoundtrackDetailViewController.swift */,
 				DE4828FA1DD3AA06007768C2 /* BriefMovieCollectionViewCell.swift */,
 				DEBDAB2E1DD3E31F00D6B57F /* SoundtrackCollectionViewCell.swift */,
+				E3BA5E071DD8F75200E3D895 /* SoundtrackDetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -216,7 +213,6 @@
 				DEAB719A1DD249DF003B3AF5 /* APIManager.swift in Sources */,
 				DEAB719D1DD263C6003B3AF5 /* Soundtrack.swift in Sources */,
 				DEAB719F1DD270AD003B3AF5 /* AlbumImage.swift in Sources */,
-				E34B78481DDA05F2002587B2 /* FullMovieGestureDetailViewController.swift in Sources */,
 				E3BA5E081DD8F75200E3D895 /* SoundtrackDetailViewController.swift in Sources */,
 				DEAB717E1DD248CB003B3AF5 /* AppDelegate.swift in Sources */,
 				DE4828F91DD3A960007768C2 /* BriefMovieCollectionViewController.swift in Sources */,
