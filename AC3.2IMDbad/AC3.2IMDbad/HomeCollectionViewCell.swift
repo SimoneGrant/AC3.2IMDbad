@@ -21,7 +21,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private func updateUI() {
         featuredTitleLabel?.text = briefMovie.title
-//        featuredImageView?.image = briefMovie.poster
         
         APIManager.manager.getData(endPoint: briefMovie.poster) { (data: Data?) in
             guard let unwrappedData = data else { return }

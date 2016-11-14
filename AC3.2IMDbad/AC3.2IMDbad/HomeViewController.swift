@@ -31,19 +31,19 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     func createLogo() {
-        let myNicelLogoWidth = 150
-        let myNiceLogoHeight = 50 //start positioning your logo at 0.0, 0.0
-        let imageView = UIImageView(frame: CGRect(x: 200, y: 50, width: myNicelLogoWidth, height: myNiceLogoHeight))
+        let logoWidth = 150
+        let logoHeight = 50
+        let imageView = UIImageView(frame: CGRect(x: 200, y: 50, width: logoWidth, height: logoHeight))
         imageView.contentMode = .scaleAspectFit
-        //imageView.center = navigationController?.center //the put your image at the center
         let image = UIImage(named: "logo4.jpg")
         imageView.image = image
+        
         navigationItem.titleView = imageView
     }
 
     func createSearchBar() {
         
-         let searchBar = UISearchBar()
+        let searchBar = UISearchBar()
         searchBar.frame = CGRect(x: 10, y: 10, width: self.view.bounds.width - 20, height: 70)
         searchBar.barStyle = UIBarStyle.default
         searchBar.searchBarStyle = UISearchBarStyle.minimal
