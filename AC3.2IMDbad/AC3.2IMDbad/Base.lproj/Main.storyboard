@@ -319,7 +319,6 @@
                             </collectionView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="mcs-ho-fUq" firstAttribute="leading" secondItem="BtJ-64-3Ih" secondAttribute="leading" constant="5" id="5VV-tM-94f"/>
                             <constraint firstItem="OeI-VY-WaP" firstAttribute="leading" secondItem="BtJ-64-3Ih" secondAttribute="leading" id="8HO-pH-pfp"/>
                             <constraint firstItem="ExK-6z-7zb" firstAttribute="top" secondItem="BtJ-64-3Ih" secondAttribute="top" id="HsC-xk-wWo"/>
                             <constraint firstAttribute="trailing" secondItem="OeI-VY-WaP" secondAttribute="trailing" id="Jq1-sc-fYk"/>
@@ -328,9 +327,10 @@
                             <constraint firstItem="mcs-ho-fUq" firstAttribute="top" secondItem="HtT-Wr-EMr" secondAttribute="bottom" constant="101" id="USF-PL-YzD"/>
                             <constraint firstItem="fKE-wM-tpL" firstAttribute="top" secondItem="ExK-6z-7zb" secondAttribute="bottom" id="ZCR-ad-cry"/>
                             <constraint firstItem="fKE-wM-tpL" firstAttribute="top" secondItem="mcs-ho-fUq" secondAttribute="bottom" constant="80" id="avc-ah-KGl"/>
-                            <constraint firstAttribute="trailing" secondItem="mcs-ho-fUq" secondAttribute="trailing" constant="5" id="fyw-6g-wEM"/>
+                            <constraint firstAttribute="trailing" secondItem="mcs-ho-fUq" secondAttribute="trailing" constant="10" id="gIU-5K-7Ud"/>
                             <constraint firstItem="OeI-VY-WaP" firstAttribute="top" secondItem="BtJ-64-3Ih" secondAttribute="top" id="jQ9-s9-DVD"/>
                             <constraint firstItem="ExK-6z-7zb" firstAttribute="leading" secondItem="BtJ-64-3Ih" secondAttribute="leading" id="lr8-fw-5w6"/>
+                            <constraint firstItem="mcs-ho-fUq" firstAttribute="leading" secondItem="BtJ-64-3Ih" secondAttribute="leading" constant="10" id="ve3-9n-cwx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XEh-I4-EHA"/>
