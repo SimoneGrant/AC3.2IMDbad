@@ -48,18 +48,19 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         }
     }
     
-    /*
+    
     func createLogo() {
         let myNicelLogoWidth = 150
         let myNiceLogoHeight = 50 //start positioning your logo at 0.0, 0.0
-        let imageView = UIImageView(frame: CGRect(x: 200, y: 50, width: myNicelLogoWidth, height: myNiceLogoHeight))
+        let imageView = UIImageView(frame: CGRect(x: 200, y: 150, width: myNicelLogoWidth, height: myNiceLogoHeight))
         imageView.contentMode = .scaleAspectFit
         //imageView.center = navigationController?.center //the put your image at the center
-        let image = UIImage(named: "logo4.jpg")
+     let image = UIImage(named: "logo4.jpg")
+     imageView.image = image
         imageView.image = image
         navigationItem.titleView = imageView
     }
-     */
+    
     
     func createSearchBar() {
         let searchBar = UISearchBar()

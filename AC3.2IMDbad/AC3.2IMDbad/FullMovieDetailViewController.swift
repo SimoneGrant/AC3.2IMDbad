@@ -61,6 +61,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     // MIGHT WANNA BANG THAT FULL INFO                \|/
                     self.navigationItem.title = self.thisMovie.fullInfo?.title
                     
+                    
                     guard let rating = self.thisMovie.fullInfo?.imdbRating else {return}
                     let imdbFullMovieRating = "\(rating)/10"
                     self.imdbRating.text = imdbFullMovieRating

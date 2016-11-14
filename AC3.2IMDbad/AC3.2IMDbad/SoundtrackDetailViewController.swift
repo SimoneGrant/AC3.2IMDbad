@@ -17,7 +17,7 @@ class SoundtrackDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //soundtrackImageView.image = UIImage(data: thisSoundtrack)
+        //self.soundtrackImageView.image = UIImage(data: thisSoundtrack.images[0].urlString)
         soundtrackTextLabel.text = thisSoundtrack.title
         
         /*
