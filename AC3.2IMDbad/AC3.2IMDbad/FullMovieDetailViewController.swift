@@ -14,6 +14,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     
     let soundtrackDetailSegue = "soundtrackDetailSegue"
 
+    
     @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
     @IBOutlet weak var fullMovieTitileLabel: UILabel!
@@ -25,12 +26,11 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         
         loadFullMovieData()
         loadSoundtrackData()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "IMDbButton2"), style: .plain, target: self, action: #selector(goToIMDb))
+    
         
-        let button1 = UIBarButtonItem(image: UIImage(named: "IMDbButton"), style: .plain, target: self, action: #selector(goToIMDb)) // action:#selector(Class.MethodName) for swift 3
-        self.navigationItem.rightBarButtonItem  = button1
         
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "#imageLiteral(resourceName: "IMDbad")"), style: .plain, target: self, action: #selector(goToIMDb))
-        
+      
     }
     
     
@@ -58,6 +58,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     self.navigationItem.title = self.thisMovie.fullInfo?.title
                     self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
                     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+
                 }
                 APIManager.manager.getData(endPoint: self.thisMovie.fullInfo!.posterURL) { (data: Data?) in
                     guard let unwrappedData = data else { return }

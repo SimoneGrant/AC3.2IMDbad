@@ -40,21 +40,38 @@
                                                 <constraint firstAttribute="width" secondItem="oJS-Tn-X19" secondAttribute="height" multiplier="300:446" id="YDF-3l-UC6"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2U-Se-Iz6">
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gje-g2-BmI">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BA8-fC-Vz7">
+                                                <frame key="frameInset"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Movie Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2U-Se-Iz6">
+                                                        <frame key="frameInset" minY="9" width="104" height="28"/>
+                                                        <fontDescription key="fontDescription" name="KohinoorBangla-Light" family="Kohinoor Bangla" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="centerX" secondItem="BA8-fC-Vz7" secondAttribute="centerX" id="VDY-RM-sd6"/>
+                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="height" secondItem="BA8-fC-Vz7" secondAttribute="height" id="XQs-Uq-Q9C"/>
+                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="centerY" secondItem="BA8-fC-Vz7" secondAttribute="centerY" id="sYF-Sp-n23"/>
+                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="width" secondItem="BA8-fC-Vz7" secondAttribute="width" id="y7i-Z4-7Nh"/>
+                                                </constraints>
+                                            </view>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="trailing" secondItem="cQ3-5P-fjr" secondAttribute="trailingMargin" id="0Fs-9h-x3B"/>
-                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="top" secondItem="oJS-Tn-X19" secondAttribute="bottom" constant="4" id="500-P0-sD9"/>
-                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="bottom" secondItem="cQ3-5P-fjr" secondAttribute="bottomMargin" constant="4" id="88P-Qp-dr5"/>
+                                    <constraint firstItem="gje-g2-BmI" firstAttribute="top" secondItem="oJS-Tn-X19" secondAttribute="bottom" id="0Ta-yi-3XZ"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="gje-g2-BmI" secondAttribute="bottom" id="1ZB-fe-kkN"/>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="top" secondItem="cQ3-5P-fjr" secondAttribute="topMargin" id="AV5-Uh-cDU"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="gje-g2-BmI" secondAttribute="trailing" id="Wab-Yd-6qZ"/>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="leading" secondItem="cQ3-5P-fjr" secondAttribute="leadingMargin" id="Xpe-d9-Ave"/>
-                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="trailing" secondItem="cQ3-5P-fjr" secondAttribute="trailingMargin" constant="4" id="bQ5-0b-Ayp"/>
-                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="leading" secondItem="cQ3-5P-fjr" secondAttribute="leadingMargin" constant="4" id="cks-gW-09v"/>
+                                    <constraint firstAttribute="leadingMargin" secondItem="gje-g2-BmI" secondAttribute="leading" id="aRf-cH-KOe"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="216"/>
                                 <connections>
@@ -89,7 +106,7 @@
             </objects>
             <point key="canvasLocation" x="2845.5999999999999" y="124.58770614692655"/>
         </scene>
-        <!--Title-->
+        <!--Full Movie Detail View Controller-->
         <scene sceneID="pe5-1P-2fJ">
             <objects>
                 <viewController id="7vd-5Q-ayh" customClass="FullMovieDetailViewController" customModule="AC3_2IMDbad" customModuleProvider="target" sceneMemberID="viewController">
@@ -178,7 +195,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="YJU-Vi-A3u" secondAttribute="trailing" id="vkR-hQ-FqC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="c2A-Ng-UEi"/>
                     <connections>
                         <outlet property="FullMovieImageView" destination="Jzf-xM-JTS" id="Y6B-IK-GBg"/>
                         <outlet property="FullMovieTitileLabel" destination="3hd-Wj-bkh" id="UzG-7c-Ust"/>

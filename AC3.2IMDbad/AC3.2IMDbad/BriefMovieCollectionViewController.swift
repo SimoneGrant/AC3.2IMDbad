@@ -80,6 +80,8 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let thisMovie = movies[indexPath.item]
         performSegue(withIdentifier: fullMovieDetailSegue, sender: thisMovie)
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,6 +89,7 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
             let destinationViewController = segue.destination as! FullMovieDetailViewController
             let thisMovie = sender as! Movie
             destinationViewController.thisMovie = thisMovie
+            
         }
     }
 
