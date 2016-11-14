@@ -18,7 +18,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var fullMovieBackgroundImage: UIImageView!
     @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
-//    @IBOutlet weak var fullMovieTitileLabel: UILabel!
     @IBOutlet weak var soundtrackCollectionView: UICollectionView!
     
     @IBOutlet weak var imdbRating: UILabel!
@@ -26,16 +25,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var fullMovieDescription: UILabel!
     @IBOutlet weak var fullMovieRating: UILabel!
     
-    
-    /*
- 
-     self.imdbRating.text = imdbFullMovieRating
-     self.fullMovieYear.text = self.thisMovie.fullInfo?.year
-     self.fullMovieRating.text = self.thisMovie.fullInfo?.rated
-     self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
-     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
 
- */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +43,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     func loadFullMovieData() {
         
         self.fullMovieImageView.image = #imageLiteral(resourceName: "loadingImage")
-//        self.fullMovieTitileLabel.text = "... loading info"
+
         
         // CHECK HERE TO SEE IF THIS MOVIE ALREADY HAS A FULL MOVIE BEFORE API CALL
    
@@ -89,7 +79,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
             
         } else {
             self.navigationItem.title = self.thisMovie.fullInfo!.title
-//            self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
            self.displayFullMovieInfo()
             if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
                 self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
@@ -176,7 +165,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         guard let thisSoundtrack = thisMovie.soundtracks?[indexPath.item] else { return cell }
         let thisSoundtrackAlbumImage = thisSoundtrack.images[0]
         
-        cell.soundtrackTextLabel.text = "\(thisSoundtrack.title)\n-\(thisSoundtrack.artistName)"
         
         if thisSoundtrackAlbumImage.imageData == nil {
             APIManager.manager.getData(endPoint: thisSoundtrackAlbumImage.urlString) { (data: Data?) in
