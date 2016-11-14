@@ -30,7 +30,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         
         loadData()
         createSearchBar()
-        //createLogo()
         
     }
     
@@ -49,7 +48,7 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         }
     }
     
-    
+    // originally had a logo in the nav bar but replaced it with a search bar
     func createLogo() {
         let myNicelLogoWidth = 150
         let myNiceLogoHeight = 50 //start positioning your logo at 0.0, 0.0
@@ -121,7 +120,6 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let thisMovie = movies[indexPath.item]
         performSegue(withIdentifier: fullMovieDetailSegue, sender: thisMovie)
-        
         
     }
     

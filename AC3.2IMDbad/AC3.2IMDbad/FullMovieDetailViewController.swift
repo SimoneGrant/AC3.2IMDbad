@@ -25,7 +25,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var fullMovieDescription: UILabel!
     @IBOutlet weak var fullMovieRating: UILabel!
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +34,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         loadSoundtrackData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "IMDbButton2"), style: .plain, target: self, action: #selector(goToIMDb))
        
-    
-      
     }
     
     
@@ -44,7 +41,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         
         self.fullMovieImageView.image = #imageLiteral(resourceName: "loadingImage")
 
-        
         // CHECK HERE TO SEE IF THIS MOVIE ALREADY HAS A FULL MOVIE BEFORE API CALL
    
         if thisMovie.fullInfo == nil {
@@ -58,14 +54,10 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                 DispatchQueue.main.async {
                     print("*****************FULL MOVIE*****************************")
                     dump(self.thisMovie.fullInfo)
-                    
-                    // MIGHT WANNA BANG THAT FULL INFO                \|/
-                    self.navigationItem.title = self.thisMovie.fullInfo?.title
-                  self.displayFullMovieInfo()
+                    self.displayFullMovieInfo()
                     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
-                    
-
                 }
+                
                 APIManager.manager.getData(endPoint: self.thisMovie.fullInfo!.posterURL) { (data: Data?) in
                     guard let unwrappedData = data else { return }
                     self.thisMovie.fullInfo?.posterData = unwrappedData
@@ -78,17 +70,24 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
             }
             
         } else {
-            self.navigationItem.title = self.thisMovie.fullInfo!.title
-           self.displayFullMovieInfo()
-            if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
-                self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
-                self.fullMovieBackgroundImage.image = UIImage(data: fullMoviePosterData)
-            } else {
-                self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
-            }
+            self.displayFullMovieInfo()
         }
-        
     }
+    
+    func displayFullMovieInfo() {
+        self.navigationItem.title = self.thisMovie.fullInfo!.title
+        self.imdbRating.text = "IMDb Rating: \(self.thisMovie.fullInfo!.imdbRating)/10"
+        self.fullMovieYear.text = "Released: \(self.thisMovie.fullInfo!.year)"
+        self.fullMovieRating.text = "Rated: \(self.thisMovie.fullInfo!.rated)"
+        self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
+        if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
+            self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
+            self.fullMovieBackgroundImage.image = UIImage(data: fullMoviePosterData)
+        } else {
+            self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+        }
+    }
+
     
     func loadSoundtrackData() {
         
@@ -118,20 +117,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
-    func displayFullMovieInfo() {
-        guard let rating = self.thisMovie.fullInfo?.imdbRating else {return}
-        let imdbFullMovieRating = "IMDb Rating: \(rating)/10"
-        self.imdbRating.text = imdbFullMovieRating
-        self.fullMovieYear.text = "Released: \(self.thisMovie.fullInfo!.year)"
-        self.fullMovieRating.text = "Rated: \(self.thisMovie.fullInfo!.rated)"
-        self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
-        self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
-
-    }
-
-    func bulidFullMovieLabelText(withFullMovie tfm: FullMovie) -> String {
-        return "\(tfm.year), Rated: \(tfm.rated), Runtime: \(tfm.runtime), IMDb Rating: \(tfm.imdbRating)\nGenre: \(tfm.genre)\nCast: \(tfm.cast)\nSummary:   \(tfm.plot)"
-    }
     
     // MARK: Collection View Data Souce Methods
     
@@ -169,7 +154,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         if thisSoundtrackAlbumImage.imageData == nil {
             APIManager.manager.getData(endPoint: thisSoundtrackAlbumImage.urlString) { (data: Data?) in
                 guard let unwrappedData = data else { return }
-                //thisSoundtrackAlbumImage.imageData = unwrappedData
+                thisSoundtrackAlbumImage.imageData = unwrappedData
                 DispatchQueue.main.async {
                     cell.soundtrackImageView?.image = UIImage(data: unwrappedData)
                     cell.setNeedsLayout()
@@ -182,6 +167,8 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        // index path of the cell is unpredictable doesn't match the index of the sountrack array
         let thisSoundtrack = thisMovie.soundtracks?[indexPath.item]
         print("----------------- index path item \(indexPath.item)")
         print("----------------- index path row \(indexPath.row)")
@@ -192,7 +179,6 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         performSegue(withIdentifier: soundtrackDetailSegue, sender: thisSoundtrack)
         
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == soundtrackDetailSegue {
