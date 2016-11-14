@@ -17,22 +17,29 @@ class SoundtrackDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //soundtrackImageView.image = UIImage(data: thisSoundtrack)
-        soundtrackTextLabel.text = thisSoundtrack.title
         
-        /*
-        let soundTrackImageData = thisSoundtrack.images[0].imageData
-        if soundTrackImageData != nil {
+        loadSoundtrackData()
+        
+    }
+    
+    func loadSoundtrackData() {
+        soundtrackTextLabel.text = ("Album Name: \(thisSoundtrack.title)\nby: \(thisSoundtrack.artistName)")
+        
+        // first checks to see if the data already exists in the class
+        
+        if let soundtrackImageData = thisSoundtrack.images[0].imageData {
+            soundtrackImageView.image = UIImage(data: soundtrackImageData)
+        }
+        else {
             APIManager.manager.getData(endPoint: thisSoundtrack.images[0].urlString, callback: { (data: Data?) in
+                guard let unwrappedData = data else { return }
+                self.thisSoundtrack.images[0].imageData = unwrappedData
                 DispatchQueue.main.async {
-                    self.soundtrackImageView.image = UIImage(data: soundTrackImageData!)
+                    self.soundtrackImageView.image = UIImage(data: unwrappedData)
                     self.view.setNeedsLayout()
                 }
             })
-            
         }
-         */
-    }
- 
+    } 
    
 }
