@@ -59,15 +59,14 @@
                                                     <constraint firstItem="S2U-Se-Iz6" firstAttribute="width" secondItem="BA8-fC-Vz7" secondAttribute="width" id="y7i-Z4-7Nh"/>
                                                 </constraints>
                                             </view>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <blurEffect style="light"/>
                                         </visualEffectView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="trailing" secondItem="cQ3-5P-fjr" secondAttribute="trailingMargin" id="0Fs-9h-x3B"/>
-                                    <constraint firstItem="gje-g2-BmI" firstAttribute="top" secondItem="oJS-Tn-X19" secondAttribute="bottom" id="0Ta-yi-3XZ"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="gje-g2-BmI" secondAttribute="bottom" id="1ZB-fe-kkN"/>
+                                    <constraint firstItem="gje-g2-BmI" firstAttribute="top" secondItem="oJS-Tn-X19" secondAttribute="bottom" constant="-26" id="0Ta-yi-3XZ"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="gje-g2-BmI" secondAttribute="bottom" constant="30" id="1ZB-fe-kkN"/>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="top" secondItem="cQ3-5P-fjr" secondAttribute="topMargin" id="AV5-Uh-cDU"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="gje-g2-BmI" secondAttribute="trailing" id="Wab-Yd-6qZ"/>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="leading" secondItem="cQ3-5P-fjr" secondAttribute="leadingMargin" id="Xpe-d9-Ave"/>
