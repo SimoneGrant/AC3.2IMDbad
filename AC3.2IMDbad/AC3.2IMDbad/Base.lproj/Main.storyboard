@@ -192,26 +192,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EXK-uV-XfC"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4k-OH-Chj">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="EXK-uV-XfC" secondAttribute="trailing" id="0B0-m8-Gp0"/>
                                             <constraint firstItem="EXK-uV-XfC" firstAttribute="leading" secondItem="Y6a-XK-kzL" secondAttribute="leading" id="FfP-xf-mFe"/>
                                             <constraint firstItem="EXK-uV-XfC" firstAttribute="top" secondItem="Y6a-XK-kzL" secondAttribute="top" id="KFI-dg-RNo"/>
-                                            <constraint firstItem="H4k-OH-Chj" firstAttribute="centerY" secondItem="EXK-uV-XfC" secondAttribute="centerY" id="Q3w-Lj-IQ0"/>
-                                            <constraint firstItem="H4k-OH-Chj" firstAttribute="top" secondItem="Y6a-XK-kzL" secondAttribute="topMargin" constant="7" id="Y1O-tV-sZ5"/>
-                                            <constraint firstItem="H4k-OH-Chj" firstAttribute="leading" secondItem="Y6a-XK-kzL" secondAttribute="leadingMargin" constant="-4" id="c4P-F5-ZuP"/>
-                                            <constraint firstItem="H4k-OH-Chj" firstAttribute="centerX" secondItem="EXK-uV-XfC" secondAttribute="centerX" id="hjf-0o-Fj3"/>
                                             <constraint firstAttribute="bottom" secondItem="EXK-uV-XfC" secondAttribute="bottom" id="huP-ip-FhX"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="soundtrackImageView" destination="EXK-uV-XfC" id="DzR-Kk-0ek"/>
-                                            <outlet property="soundtrackTextLabel" destination="H4k-OH-Chj" id="t0M-Db-Gwv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
