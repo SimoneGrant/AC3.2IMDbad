@@ -8,9 +8,12 @@
 
 import UIKit
 
-class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class BriefMovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UISearchBarDelegate {
     
     let briefMovieAPIEndpoint = "https://www.omdbapi.com/?s="
+    
+    var searchController: UISearchController!
+    
     var searchWord = "batman"
     
     let fullMovieAPIEndpoint =  "https://www.omdbapi.com/?i="
@@ -25,8 +28,13 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        
+        createSearchBar()
+        //createLogo()
+        
     }
     
+
     func loadData() {
         APIManager.manager.getData(endPoint: briefMovieAPIEndpoint + searchWord) { (data: Data?) in
             guard let unwrappedData = data else { return }
@@ -41,15 +49,53 @@ class BriefMovieCollectionViewController: UICollectionViewController, UICollecti
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let allTextFieldText = textField.text ?? "batman"
-        textField.text = nil
-        self.searchWord = allTextFieldText.replacingOccurrences(of: " ", with: "%20")
-        
-        loadData()
-        return true
+    
+    func createLogo() {
+        let myNicelLogoWidth = 150
+        let myNiceLogoHeight = 50 //start positioning your logo at 0.0, 0.0
+        let imageView = UIImageView(frame: CGRect(x: 200, y: 50, width: myNicelLogoWidth, height: myNiceLogoHeight))
+        imageView.contentMode = .scaleAspectFit
+        //imageView.center = navigationController?.center //the put your image at the center
+        let image = UIImage(named: "logo4.jpg")
+        imageView.image = image
+        navigationItem.titleView = imageView
     }
+    
+    func createSearchBar() {
+        let searchBar = UISearchBar()
+        searchBar.frame = CGRect(x: 0, y: 60, width: self.view.bounds.width, height: 70)
+        searchBar.barStyle = UIBarStyle.default
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchBar.isTranslucent = true
+        searchBar.showsCancelButton = false
+        searchBar.showsSearchResultsButton = true
+        searchBar.placeholder = "Enter a movie to search"
+        searchBar.delegate = self
+        searchBar.barTintColor = UIColor(red: 130/255, green: 0/255, blue: 13/255, alpha: 1.0) /* #82000d */
+        searchBar.resignFirstResponder()
+        self.navigationItem.titleView = searchBar
+    }
+    
+    
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let allTextFieldText = searchText
+        self.searchWord = allTextFieldText.replacingOccurrences(of: " ", with: "%20")
+        loadData()
+        
+    }
+ 
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchText = searchBar.text
+        let allTextFieldText = searchText
+        self.searchWord = (allTextFieldText?.replacingOccurrences(of: " ", with: "%20"))!
+        loadData()
+    }
+ 
+ 
+ 
 
+    
 
     // MARK: UICollectionViewDataSource
 

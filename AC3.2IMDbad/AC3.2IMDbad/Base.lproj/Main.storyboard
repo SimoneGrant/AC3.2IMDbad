@@ -45,28 +45,31 @@
                                                 <frame key="frameInset"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Movie Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2U-Se-Iz6">
-                                                        <frame key="frameInset" minY="9" width="104" height="28"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2U-Se-Iz6">
                                                         <fontDescription key="fontDescription" name="KohinoorBangla-Light" family="Kohinoor Bangla" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="centerX" secondItem="BA8-fC-Vz7" secondAttribute="centerX" id="VDY-RM-sd6"/>
-                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="height" secondItem="BA8-fC-Vz7" secondAttribute="height" id="XQs-Uq-Q9C"/>
-                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="centerY" secondItem="BA8-fC-Vz7" secondAttribute="centerY" id="sYF-Sp-n23"/>
-                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="width" secondItem="BA8-fC-Vz7" secondAttribute="width" id="y7i-Z4-7Nh"/>
+                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="height" secondItem="BA8-fC-Vz7" secondAttribute="height" id="bnz-NH-eZr"/>
+                                                    <constraint firstItem="S2U-Se-Iz6" firstAttribute="width" secondItem="BA8-fC-Vz7" secondAttribute="width" id="pC6-B1-EO3"/>
                                                 </constraints>
                                             </view>
+                                            <constraints>
+                                                <constraint firstItem="S2U-Se-Iz6" firstAttribute="leading" secondItem="gje-g2-BmI" secondAttribute="leading" id="CqR-Ur-kUh"/>
+                                                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="S2U-Se-Iz6" secondAttribute="bottom" constant="24" id="Dfg-sw-5Cd"/>
+                                                <constraint firstAttribute="trailing" secondItem="S2U-Se-Iz6" secondAttribute="trailing" id="duw-9B-uZW"/>
+                                                <constraint firstItem="S2U-Se-Iz6" firstAttribute="top" secondItem="gje-g2-BmI" secondAttribute="top" id="swL-PQ-NjN"/>
+                                            </constraints>
                                             <blurEffect style="light"/>
                                         </visualEffectView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="trailing" secondItem="cQ3-5P-fjr" secondAttribute="trailingMargin" id="0Fs-9h-x3B"/>
-                                    <constraint firstItem="gje-g2-BmI" firstAttribute="top" secondItem="oJS-Tn-X19" secondAttribute="bottom" constant="-26" id="0Ta-yi-3XZ"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="gje-g2-BmI" secondAttribute="bottom" constant="30" id="1ZB-fe-kkN"/>
+                                    <constraint firstItem="gje-g2-BmI" firstAttribute="top" secondItem="oJS-Tn-X19" secondAttribute="bottom" constant="-23" id="0Ta-yi-3XZ"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="gje-g2-BmI" secondAttribute="bottom" constant="27" id="1ZB-fe-kkN"/>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="top" secondItem="cQ3-5P-fjr" secondAttribute="topMargin" id="AV5-Uh-cDU"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="gje-g2-BmI" secondAttribute="trailing" id="Wab-Yd-6qZ"/>
                                     <constraint firstItem="oJS-Tn-X19" firstAttribute="leading" secondItem="cQ3-5P-fjr" secondAttribute="leadingMargin" id="Xpe-d9-Ave"/>
@@ -86,16 +89,6 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="0fs-dz-mad">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" id="ZPM-XC-3fX">
-                            <rect key="frame" x="113" y="7" width="150" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="dho-qQ-Sbd" id="a4q-V1-h87"/>
-                            </connections>
-                        </textField>
                     </navigationItem>
                     <connections>
                         <segue destination="7vd-5Q-ayh" kind="show" identifier="fullMovieDetailSegue" id="uI3-hJ-Tub"/>
