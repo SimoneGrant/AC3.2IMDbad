@@ -18,8 +18,24 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var fullMovieBackgroundImage: UIImageView!
     @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
-    @IBOutlet weak var fullMovieTitileLabel: UILabel!
+//    @IBOutlet weak var fullMovieTitileLabel: UILabel!
     @IBOutlet weak var soundtrackCollectionView: UICollectionView!
+    
+    @IBOutlet weak var imdbRating: UILabel!
+    @IBOutlet weak var fullMovieYear: UILabel!
+    @IBOutlet weak var fullMovieDescription: UILabel!
+    @IBOutlet weak var fullMovieRating: UILabel!
+    
+    
+    /*
+ 
+     self.imdbRating.text = imdbFullMovieRating
+     self.fullMovieYear.text = self.thisMovie.fullInfo?.year
+     self.fullMovieRating.text = self.thisMovie.fullInfo?.rated
+     self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
+     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+
+ */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +44,16 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         loadFullMovieData()
         loadSoundtrackData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "IMDbButton2"), style: .plain, target: self, action: #selector(goToIMDb))
+       
     
       
     }
     
     
-    
     func loadFullMovieData() {
         
         self.fullMovieImageView.image = #imageLiteral(resourceName: "loadingImage")
-        self.fullMovieTitileLabel.text = "... loading info"
+//        self.fullMovieTitileLabel.text = "... loading info"
         
         // CHECK HERE TO SEE IF THIS MOVIE ALREADY HAS A FULL MOVIE BEFORE API CALL
    
@@ -55,7 +71,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     
                     // MIGHT WANNA BANG THAT FULL INFO                \|/
                     self.navigationItem.title = self.thisMovie.fullInfo?.title
-                    self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
+                  self.displayFullMovieInfo()
                     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
                     
 
@@ -73,8 +89,8 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
             
         } else {
             self.navigationItem.title = self.thisMovie.fullInfo!.title
-            self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
-            
+//            self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
+           self.displayFullMovieInfo()
             if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
                 self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
                 self.fullMovieBackgroundImage.image = UIImage(data: fullMoviePosterData)
@@ -111,6 +127,17 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         let imdbString = "http://www.imdb.com/title/" + thisMovie.briefInfo.imdbID
         guard let url = URL(string: imdbString) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    func displayFullMovieInfo() {
+        guard let rating = self.thisMovie.fullInfo?.imdbRating else {return}
+        let imdbFullMovieRating = "IMDb Rating: \(rating)/10"
+        self.imdbRating.text = imdbFullMovieRating
+        self.fullMovieYear.text = "Released: \(self.thisMovie.fullInfo!.year)"
+        self.fullMovieRating.text = "Rated: \(self.thisMovie.fullInfo!.rated)"
+        self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
+        self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+
     }
 
     func bulidFullMovieLabelText(withFullMovie tfm: FullMovie) -> String {
