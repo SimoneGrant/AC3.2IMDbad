@@ -14,11 +14,16 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     
     let soundtrackDetailSegue = "soundtrackDetailSegue"
 
-    
+    //Full Movie
     @IBOutlet weak var fullMovieBackgroundImage: UIImageView!
     @IBOutlet weak var noAlbumFoundImage: UIImageView!
     @IBOutlet weak var fullMovieImageView: UIImageView!
-    @IBOutlet weak var fullMovieTitileLabel: UILabel!
+    //@IBOutlet weak var fullMovieTitileLabel: UILabel!
+    @IBOutlet weak var imdbRating: UILabel!
+    @IBOutlet weak var fullMovieYear: UILabel!
+    @IBOutlet weak var fullMovieRating: UILabel!
+    @IBOutlet weak var fullMovieDescription: UILabel!
+    //Collection
     @IBOutlet weak var soundtrackCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -37,7 +42,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
     func loadFullMovieData() {
         
         self.fullMovieImageView.image = #imageLiteral(resourceName: "loadingImage")
-        self.fullMovieTitileLabel.text = "... loading info"
+        self.imdbRating.text = "... loading info"
         
         // CHECK HERE TO SEE IF THIS MOVIE ALREADY HAS A FULL MOVIE BEFORE API CALL
    
@@ -55,8 +60,16 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                     
                     // MIGHT WANNA BANG THAT FULL INFO                \|/
                     self.navigationItem.title = self.thisMovie.fullInfo?.title
-                    self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
+                    
+                    guard let rating = self.thisMovie.fullInfo?.imdbRating else {return}
+                    let imdbFullMovieRating = "\(rating)/10"
+                    self.imdbRating.text = imdbFullMovieRating
+                    self.fullMovieYear.text = self.thisMovie.fullInfo?.year
+                    self.fullMovieRating.text = self.thisMovie.fullInfo?.rated
+                    self.fullMovieDescription.text = self.thisMovie.fullInfo?.plot
                     self.fullMovieImageView.image = #imageLiteral(resourceName: "noAvailableImage")
+                    
+                    //self.fullMovieDesc.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
                     
 
                 }
@@ -73,7 +86,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
             
         } else {
             self.navigationItem.title = self.thisMovie.fullInfo!.title
-            self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
+            //self.fullMovieTitileLabel.text = self.bulidFullMovieLabelText(withFullMovie: self.thisMovie.fullInfo!)
             
             if let fullMoviePosterData = thisMovie.fullInfo?.posterData {
                 self.fullMovieImageView.image = UIImage(data: fullMoviePosterData)
@@ -94,6 +107,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
                 self.thisMovie.soundtracks = Movie.buildSoundtrackArray(from: unwrappedData)
                 if (self.thisMovie.soundtracks?.count)! > 0 {
                     DispatchQueue.main.async {
+                        
                         self.soundtrackCollectionView.reloadData()
                     }
                     print("________________________ This is the first album in soundtracks ______________________________")
@@ -145,7 +159,7 @@ class FullMovieDetailViewController: UIViewController, UICollectionViewDelegate,
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.soundtrackReuseIdentifier, for: indexPath) as! SoundtrackCollectionViewCell
         
-        guard (thisMovie.soundtracks?.count)! > 0 else { return cell }
+        guard (thisMovie.soundtracks?.count)! > 0 else {return cell}
         guard let thisSoundtrack = thisMovie.soundtracks?[indexPath.item] else { return cell }
         let thisSoundtrackAlbumImage = thisSoundtrack.images[0]
         
