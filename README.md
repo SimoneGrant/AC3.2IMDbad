@@ -15,7 +15,9 @@ An interactive app that searches and catalogs movie details and soundtracks. Ins
 
 ## Mira
 
-###(Topic Learned)
+### Project planning and Git methodology
+
+I realized how much more time is needed for pre-modeling before actually coding any project.  It was tough developing a project with new code or ideas while maintaining a standard code structure to avoid merge conflicts. I've probably learned bad Git habit while manually downloading new files, but have a  much better understanding as to how useful Git can be when developing projects with others.  
 
 (Blurb)
 
