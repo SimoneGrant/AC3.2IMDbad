@@ -11,6 +11,10 @@
 		7D2A32761DD74867001C011E /* IMDbad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2A32751DD74867001C011E /* IMDbad.jpg */; };
 		7D2A32781DD74F0B001C011E /* Batman-BenAffleck.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D2A32771DD74F0B001C011E /* Batman-BenAffleck.jpg */; };
 		7D2A327A1DD7718D001C011E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2A32791DD7718D001C011E /* HomeCollectionViewCell.swift */; };
+		7D369B261DD9271300D774CF /* IMDbad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D369B241DD9271200D774CF /* IMDbad.jpg */; };
+		7D369B271DD9271300D774CF /* logo4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D369B251DD9271300D774CF /* logo4.jpg */; };
+		7D369B2A1DD9272800D774CF /* Batman-BenAffleck.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D369B281DD9272800D774CF /* Batman-BenAffleck.jpg */; };
+		7D369B2B1DD9272800D774CF /* film.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D369B291DD9272800D774CF /* film.jpg */; };
 		7D4BED371DD815450044C05D /* film.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BED361DD815450044C05D /* film.jpg */; };
 		7DB1052F1DD8D17900B41AA0 /* Atami-Display.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1052B1DD8D17900B41AA0 /* Atami-Display.otf */; };
 		7DB105301DD8D17A00B41AA0 /* Atami-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1052C1DD8D17900B41AA0 /* Atami-Light.otf */; };
@@ -40,6 +44,10 @@
 		7D2A32751DD74867001C011E /* IMDbad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMDbad.jpg; path = ../../../IMDbad.jpg; sourceTree = "<group>"; };
 		7D2A32771DD74F0B001C011E /* Batman-BenAffleck.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Batman-BenAffleck.jpg"; path = "../../../../Downloads/Batman-BenAffleck.jpg"; sourceTree = "<group>"; };
 		7D2A32791DD7718D001C011E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7D369B241DD9271200D774CF /* IMDbad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMDbad.jpg; path = "../../IMDbad resources/IMDbad.jpg"; sourceTree = "<group>"; };
+		7D369B251DD9271300D774CF /* logo4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = logo4.jpg; path = "../../IMDbad resources/logo4.jpg"; sourceTree = "<group>"; };
+		7D369B281DD9272800D774CF /* Batman-BenAffleck.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Batman-BenAffleck.jpg"; path = "../../IMDbad resources/Batman-BenAffleck.jpg"; sourceTree = "<group>"; };
+		7D369B291DD9272800D774CF /* film.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = film.jpg; path = "../../IMDbad resources/film.jpg"; sourceTree = "<group>"; };
 		7D4BED361DD815450044C05D /* film.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = film.jpg; path = ../../../film.jpg; sourceTree = "<group>"; };
 		7DB1052B1DD8D17900B41AA0 /* Atami-Display.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Atami-Display.otf"; path = "../../../Atami - Full Font 2/Atami-Display.otf"; sourceTree = "<group>"; };
 		7DB1052C1DD8D17900B41AA0 /* Atami-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Atami-Light.otf"; path = "../../../Atami - Full Font 2/Atami-Light.otf"; sourceTree = "<group>"; };
@@ -77,6 +85,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D369B2C1DD9274A00D774CF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7D369B251DD9271300D774CF /* logo4.jpg */,
+				7D369B241DD9271200D774CF /* IMDbad.jpg */,
+				7D369B281DD9272800D774CF /* Batman-BenAffleck.jpg */,
+				7D369B291DD9272800D774CF /* film.jpg */,
+			);
+			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		DEAB71711DD248CB003B3AF5 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +139,7 @@
 		DEAB71941DD24949003B3AF5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7D369B2C1DD9274A00D774CF /* Images */,
 				DEAB71811DD248CB003B3AF5 /* Main.storyboard */,
 				DEAB71841DD248CB003B3AF5 /* Assets.xcassets */,
 				DEAB71861DD248CB003B3AF5 /* LaunchScreen.storyboard */,
@@ -226,12 +247,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D369B2B1DD9272800D774CF /* film.jpg in Resources */,
 				7DB105311DD8D17A00B41AA0 /* Atami-Oblique.otf in Resources */,
 				DEAB71881DD248CB003B3AF5 /* LaunchScreen.storyboard in Resources */,
+				7D369B261DD9271300D774CF /* IMDbad.jpg in Resources */,
 				7DB105321DD8D17A00B41AA0 /* Atami-Regular.otf in Resources */,
 				7D2A32781DD74F0B001C011E /* Batman-BenAffleck.jpg in Resources */,
+				7D369B2A1DD9272800D774CF /* Batman-BenAffleck.jpg in Resources */,
 				7D4BED371DD815450044C05D /* film.jpg in Resources */,
 				7DF4E14A1DD7C4DB00830FC8 /* logo3.jpg in Resources */,
+				7D369B271DD9271300D774CF /* logo4.jpg in Resources */,
 				DEAB71851DD248CB003B3AF5 /* Assets.xcassets in Resources */,
 				7DB105341DD8D18E00B41AA0 /* Atami-LightOblique.otf in Resources */,
 				7DB105361DD8DE3F00B41AA0 /* logo4.jpg in Resources */,

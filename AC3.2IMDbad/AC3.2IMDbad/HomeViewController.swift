@@ -44,7 +44,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     func createSearchBar() {
         
          let searchBar = UISearchBar()
-        searchBar.frame = CGRect(x: 0, y: 10, width: self.view.bounds.width, height: 70)
+        searchBar.frame = CGRect(x: 10, y: 10, width: self.view.bounds.width - 20, height: 70)
         searchBar.barStyle = UIBarStyle.default
         searchBar.searchBarStyle = UISearchBarStyle.minimal
         searchBar.isTranslucent = true
@@ -54,6 +54,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.barTintColor = UIColor(red: 130/255, green: 0/255, blue: 13/255, alpha: 1.0) /* #82000d */
         searchBar.resignFirstResponder()
+
         self.view.addSubview(searchBar)
         
         
