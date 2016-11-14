@@ -44,10 +44,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     func createSearchBar() {
         
         let searchBar = UISearchBar()
-        searchBar.frame = CGRect(x: 10, y: 10, width: self.view.bounds.width - 20, height: 70)
+        searchBar.frame = CGRect(x: 20, y: 20, width: self.view.bounds.width - 40, height: 70)
         searchBar.barStyle = UIBarStyle.default
         searchBar.searchBarStyle = UISearchBarStyle.minimal
-        searchBar.isTranslucent = true
+        searchBar.isTranslucent = false
         searchBar.showsCancelButton = false
         searchBar.showsSearchResultsButton = false
         searchBar.placeholder = "Enter a movie to search"
